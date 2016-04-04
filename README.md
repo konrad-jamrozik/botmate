@@ -1,2 +1,4 @@
-# botmate
-Software for controlling BotMate, a robot used for showcasing test generation concepts @ Saarland CISPA.
+# BotMate
+Software for controlling BotMate, a robot used for showcasing test generation tools @ [cispa.saarland](https://cispa.saarland/).
+
+See also: [droidmate.org](https://www.droidmate.org/)

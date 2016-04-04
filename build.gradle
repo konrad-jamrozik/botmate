@@ -1,0 +1,68 @@
+// Copyright (c) 2012-2016 Saarland University
+// All rights reserved.
+//
+// Author: Konrad Jamrozik, jamrozik@st.cs.uni-saarland.de
+//
+// This file is part of the "DroidMate" project.
+//
+// www.droidmate.org
+
+apply plugin: 'groovy'
+
+compileJava.sourceCompatibility = JavaVersion.VERSION_1_8
+compileJava.targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+  mavenCentral()
+}
+
+// For explanation of this code, see comments in [command build.gradle]
+configurations {forceJunitPriority}
+sourceSets.test.runtimeClasspath = configurations.forceJunitPriority + sourceSets.test.runtimeClasspath
+sourceSets.test.compileClasspath = configurations.forceJunitPriority + sourceSets.test.compileClasspath
+
+String libsSerialPort = "libs_serialPort"
+def osIsWindows() {
+  if (System.properties['os.name'].toLowerCase().contains('windows'))
+    1 else 0
+}
+// Returns the path to directory of OS-dependent library required to interact with a robot through serial port.
+def libsSerialPortDir = {
+  if (osIsWindows())
+  // not sure if the libraries in this dir will work on windows versions different than Windows 7 x64
+    return "$projectDir/$libsSerialPort/Windows_7"
+  else
+    return "$projectDir/$libsSerialPort/Mac_OS"
+}
+
+dependencies {
+
+  forceJunitPriority 'junit:junit:4.12'
+  testCompile 'junit:junit:4.12'
+  testCompile 'org.hamcrest:hamcrest-core:1.3'
+
+  compile 'com.vividsolutions:jts:1.13'
+  compile 'com.beust:jcommander:1.35'
+  compile 'com.google.guava:guava:19.0'
+  compile 'org.apache.commons:commons-lang3:3.3'
+  compile 'org.slf4j:slf4j-api:1.7.20'
+  compile 'org.slf4j:slf4j-simple:1.7.20'
+  compile 'org.codehaus.groovy:groovy-all:2.4.6'
+
+  compile fileTree(dir: libsSerialPortDir(), include: '*.jar')
+}
+
+
+
+test {
+
+  // For explanation of this code, see comments in [command build.gradle]
+  workingDir rootDir
+
+  // For explanation of this code, see comments in [command build.gradle]
+  includes = ['']
+
+}
+
+// [command build.gradle]: https://github.com/konrad-jamrozik/droidmate/blob/d50bbe0667b3a0e97652357a30653d70c969fec5/dev/droidmate/projects/command/build.gradle
+
