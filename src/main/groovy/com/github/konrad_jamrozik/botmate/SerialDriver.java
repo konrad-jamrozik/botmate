@@ -26,14 +26,11 @@ import java.util.concurrent.TimeUnit;
 
 public class SerialDriver implements ISerialDriver
 {
-  public static final Marker serialDriver = MarkerFactory.getMarker("MARKER_SERIAL_DRIVER");
+  private static final Marker serialDriver = MarkerFactory.getMarker("MARKER_SERIAL_DRIVER");
 
   private InputStream serialPortIn;
   private OutputStream serialPortOut;
   private SerialPort serialPort;
-
-  /** Last string that was sent to serial port using the {@link #send(String)} method. */
-  private String lastSentString;
 
   private RobotConfiguration robotConfig;
 
@@ -49,9 +46,8 @@ public class SerialDriver implements ISerialDriver
     log.debug("Getting serial port names.");
 
     Enumeration<CommPortIdentifier> portEnum;
-    Vector<String> portVect = new Vector<String>();
-    //noinspection unchecked
-    portEnum = CommPortIdentifier.getPortIdentifiers();
+    Vector<String> portVect = new Vector<>();
+    portEnum = getPortIdentifiers();
 
     CommPortIdentifier portId;
     while (portEnum.hasMoreElements())
@@ -65,6 +61,12 @@ public class SerialDriver implements ISerialDriver
 
     log.debug("Found {} port(s).", portVect.size());
     return portVect;
+  }
+
+  @SuppressWarnings("unchecked")
+  private Enumeration<CommPortIdentifier> getPortIdentifiers()
+  {
+    return CommPortIdentifier.getPortIdentifiers();
   }
 
   public void connect(String portName) throws RobotException
@@ -111,8 +113,6 @@ public class SerialDriver implements ISerialDriver
     {
       throw new RobotException(e);
     }
-    lastSentString = string;
-
     log.trace(serialDriver, "SEND {}", string);
 
   }
