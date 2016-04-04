@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package org.droidmate.robot;
+package com.github.konrad_jamrozik.botmate;
 
 public interface IRobotController
 {

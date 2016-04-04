@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package org.droidmate.robot
+package com.github.konrad_jamrozik.botmate
 
 import com.google.common.collect.Lists
 import groovy.util.logging.Slf4j

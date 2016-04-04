@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package org.droidmate.robot;
+package com.github.konrad_jamrozik.botmate;
 
 import com.vividsolutions.jts.algorithm.Angle;
 import com.vividsolutions.jts.geom.Coordinate;

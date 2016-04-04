@@ -6,7 +6,7 @@
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
-    <option name="MAIN_CLASS_NAME" value="org.droidmate.robot.RobotInteractiveTester" />
+    <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.RobotInteractiveTester" />
     <option name="VM_PARAMETERS" value="" />
     <option name="PROGRAM_PARAMETERS" value="-echoCable" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />

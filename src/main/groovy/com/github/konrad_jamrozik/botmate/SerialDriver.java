@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package org.droidmate.robot;
+package com.github.konrad_jamrozik.botmate;
 
 import com.google.common.base.Stopwatch;
 import gnu.io.*;

@@ -7,13 +7,11 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package org.droidmate.robot;
+package com.github.konrad_jamrozik.botmate;
 
-public interface ICoordinateMapper
+import java.util.List;
+
+public interface IRobotPathPlotter
 {
-  float mapToX(int x, int y, boolean isLandscapeOrientation);
-
-  float mapToY(int x, int y, boolean isLandscapeOrientation);
-
-
+  List<Pair<Float, Float>> plot(float mappedStartX, float mappedStartY, float mappedEndX, float mappedEndY);
 }
