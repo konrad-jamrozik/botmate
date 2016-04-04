@@ -1,11 +1,11 @@
 // Copyright (c) 2012-2016 Saarland University
 // All rights reserved.
 //
-// Author: Konrad Jamrozik, jamrozik@st.cs.uni-saarland.de
+// Author: Konrad Jamrozik, konrad.jamrozik@cispa.saarland
 //
-// This file is part of the "DroidMate" project.
+// This file is part of the "BotMate" project.
 //
-// www.droidmate.org
+// github.com/konrad-jamrozik/botmate
 
 apply plugin: 'groovy'
 

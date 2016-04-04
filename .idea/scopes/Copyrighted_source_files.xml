@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Copyrighted source files" pattern="[botmate_main]:org.droidmate.robot..*||file[botmate]:build.gradle" />
+</component>
