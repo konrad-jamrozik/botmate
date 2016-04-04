@@ -3,11 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate_main.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate_main.iml" group="botmate" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate_test.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate_test.iml" group="botmate" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller.iml" group="controller" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller_main.iml" group="controller" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller_test.iml" group="controller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_main.iml" group="demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/demo/demo_test.iml" group="demo" />
     </modules>
   </component>
 </project>

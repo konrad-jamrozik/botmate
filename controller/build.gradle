@@ -10,11 +10,6 @@
 group 'com.github.konrad-jamrozik'
 version 'dev'
 
-
-repositories {
-  mavenCentral()
-}
-
 apply plugin: "groovy"
 
 compileJava.sourceCompatibility = JavaVersion.VERSION_1_8

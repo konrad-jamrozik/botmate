@@ -17,4 +17,5 @@
 
 rootProject.name = 'botmate'
 
-include "controller"
+include 'controller'
+include 'demo'
