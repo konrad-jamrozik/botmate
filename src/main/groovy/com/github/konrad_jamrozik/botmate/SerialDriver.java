@@ -189,11 +189,8 @@ public class SerialDriver implements ISerialDriver
           "Got instead: %s",
         expectedResponse, receipt.toString()));
 
-    // KJA restore log
-    System.out.println("DONE receiving from serial port. Message received: "+receipt.toString());
-    System.out.println("RECV "+ receipt.toString());
-//    log.trace("DONE receiving from serial port. Message received: {}", receipt.toString());
-//    log.trace(serialDriver, "RECV {}", receipt.toString());
+    log.trace("DONE receiving from serial port. Message received: {}", receipt.toString());
+    log.trace(serialDriver, "RECV {}", receipt.toString());
 
     return receipt.toString();
   }
@@ -201,7 +198,6 @@ public class SerialDriver implements ISerialDriver
   private boolean noExpectedResponseFromRobotYet(StringBuilder receipt, String expectedResponse, Stopwatch stopwatch)
   {
     return !receipt.toString().contains(expectedResponse)
-      // TODO more CeBIT 2014 quick fixes, because f*** yea
       && stopwatch.elapsed(TimeUnit.MILLISECONDS) <= robotConfig.robotResponseTimeout;
   }
 
