@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package com.github.konrad_jamrozik.botmate;
+package com.github.konrad_jamrozik.botmate.controller;
 
 import java.util.ArrayList;
 import java.util.List;

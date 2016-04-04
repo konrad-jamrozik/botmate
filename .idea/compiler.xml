@@ -21,6 +21,8 @@
     <bytecodeTargetLevel>
       <module name="botmate_main" target="1.8" />
       <module name="botmate_test" target="1.8" />
+      <module name="controller_main" target="1.8" />
+      <module name="controller_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

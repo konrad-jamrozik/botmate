@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate_main.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate_main.iml" group="botmate" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/botmate_test.iml" filepath="$PROJECT_DIR$/.idea/modules/botmate_test.iml" group="botmate" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller.iml" group="controller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller_main.iml" group="controller" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/controller/controller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/controller/controller_test.iml" group="controller" />
     </modules>
   </component>
 </project>

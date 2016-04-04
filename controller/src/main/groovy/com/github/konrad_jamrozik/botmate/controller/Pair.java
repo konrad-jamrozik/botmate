@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package com.github.konrad_jamrozik.botmate;
+package com.github.konrad_jamrozik.botmate.controller;
 
 public class Pair<X, Y>
 {

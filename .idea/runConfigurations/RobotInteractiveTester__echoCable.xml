@@ -6,7 +6,7 @@
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
-    <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.RobotInteractiveTester" />
+    <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.controller.RobotInteractiveTester" />
     <option name="VM_PARAMETERS" value="" />
     <option name="PROGRAM_PARAMETERS" value="-echoCable" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -15,9 +15,9 @@
     <option name="ENABLE_SWING_INSPECTOR" value="false" />
     <option name="ENV_VARIABLES" />
     <option name="PASS_PARENT_ENVS" value="true" />
-    <module name="botmate_main" />
+    <module name="controller_main" />
     <envs>
-      <env name="PATH" value="C:\my\local\repos\github\botmate\libs_serialPort\Windows_7" />
+      <env name="PATH" value="C:\my\local\repos\github\botmate\controller\libs_serialPort\Windows_7" />
     </envs>
     <method />
   </configuration>
