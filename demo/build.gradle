@@ -10,10 +10,37 @@ dependencies {
 
   testCompile 'junit:junit:4.12'
   testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
   compile 'org.slf4j:slf4j-api:1.7.20'
   compile 'org.slf4j:slf4j-simple:1.7.20'
+}
 
+test.configure {
+  filter.includeTest "*DemoTest", "runs_demo_with_stubs"
+}
 
+task testDevice(type: Test, dependsOn: "testClasses") { Test it ->
+
+  it.group = "verification"
+  it.description = "Tests the demo with real Nexus 10 and with stubbed (faked) robot implementation."
+
+  it.filter.includeTest "*DemoTest", "runs_demo_with_nexus10_and_robot_stub"
+}
+
+task testRobot(type: Test, dependsOn: "testClasses") { Test it ->
+
+  it.group = "verification"
+  it.description = "Tests the demo with stubbed (faked) Android device implementation and with actual robot."
+
+  it.filter.includeTest "*DemoTest", "runs_demo_with_android_device_stub_and_robot"
+}
+
+task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
+
+  it.group = "verification"
+  it.description = "Tests the demo with real Nexus 10 and with actual robot."
+
+  it.filter.includeTest "*DemoTest", "runs_demo"
 }

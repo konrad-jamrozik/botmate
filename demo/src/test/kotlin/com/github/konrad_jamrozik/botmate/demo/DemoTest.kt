@@ -29,5 +29,10 @@ class DemoTest {
   fun runs_demo_with_android_device_stub_and_robot() {
     demo(AndroidDeviceWithRobot(AndroidDeviceStub(), Robot()))
   }
+
+  @Test
+  fun runs_demo() {
+    demo(AndroidDeviceWithRobot(Nexus10(), Robot()))
+  }
 }
 
