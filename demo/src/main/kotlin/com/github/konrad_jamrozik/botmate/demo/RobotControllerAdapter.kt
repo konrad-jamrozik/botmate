@@ -11,14 +11,16 @@ package com.github.konrad_jamrozik.botmate.demo
 
 import com.github.konrad_jamrozik.botmate.controller.*
 import java.io.InputStreamReader
+import kotlin.Pair
 
 class RobotControllerAdapter : IRobotControllerAdapter
 {
-  val robotController: IRobotController = buildRobotController()
+  private val robotController: IRobotController by lazy { buildRobotController() }
+
+  private val robotConfig: RobotConfiguration by lazy { RobotConfiguration() }
 
   private fun buildRobotController() : IRobotController {
 
-    val robotConfig = RobotConfiguration()
     val userInputReader = InputStreamReader(System.`in`, Charsets.UTF_8)
     val robotController = RobotController(
       robotConfig,
@@ -28,6 +30,15 @@ class RobotControllerAdapter : IRobotControllerAdapter
       RobotPathPlotterArc(robotConfig)
     )
     return robotController
+  }
+
+  override fun moveTo(coordinates: Pair<Int, Int>) {
+
+    robotController.moveToCoordinates(
+      coordinates.first,
+      coordinates.second,
+      robotConfig.robotSpeed,
+      /* isLandscapeOrientation */ true)
   }
 
   override fun calibrate() {

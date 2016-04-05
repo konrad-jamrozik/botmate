@@ -20,6 +20,7 @@ class Robot(val controller: IRobotControllerAdapter) : IRobot {
 
   override fun moveTo(coordinates: Pair<Int, Int>) {
     log.debug("Robot.moveTo()")
+    controller.moveTo(coordinates)
     // KJA next: depend on 'controller' project, create RobotControllerAdapter() here and use it to communicate with the robot.
     // For reference, see org.droidmate.robot.AndroidDeviceWithRobot#performActionOnDevice
   }

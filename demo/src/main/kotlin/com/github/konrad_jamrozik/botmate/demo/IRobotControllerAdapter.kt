@@ -12,4 +12,6 @@ package com.github.konrad_jamrozik.botmate.demo
 interface IRobotControllerAdapter {
   fun calibrate()
 
+  fun moveTo(coordinates: Pair<Int, Int>)
+
 }
