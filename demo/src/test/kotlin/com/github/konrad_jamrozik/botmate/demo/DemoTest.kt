@@ -13,8 +13,6 @@ import org.junit.Test
 
 class DemoTest {
 
-  // KJA current work
-
   @Test
   fun runs_demo_with_stubs() {
     demo(

@@ -9,11 +9,13 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
+// WISH document everything
 class AndroidDeviceDemo(val device: IAndroidDevice, val buttons: IDeviceButtons) : IAndroidDeviceDemo {
 
   val log = loggerFor(AndroidDeviceDemo::class.java)
 
   override fun setup() {
+    log.debug("setup()")
     device.setup()
   }
 

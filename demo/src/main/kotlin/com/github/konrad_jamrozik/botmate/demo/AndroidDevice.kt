@@ -18,6 +18,7 @@ class AndroidDevice(val adb : IAdb) : IAndroidDevice {
   }
 
   override fun press(button: Button) {
+    log.debug("press(button)")
     adb.press(button)
   }
 }

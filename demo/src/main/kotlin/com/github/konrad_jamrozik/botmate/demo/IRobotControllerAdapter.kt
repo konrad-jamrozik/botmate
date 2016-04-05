@@ -14,4 +14,8 @@ interface IRobotControllerAdapter {
 
   fun moveTo(coordinates: Pair<Int, Int>)
 
+  fun moveDown()
+
+  fun moveUp()
+
 }

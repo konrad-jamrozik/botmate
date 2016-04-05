@@ -33,6 +33,11 @@ class RobotControllerAdapter : IRobotControllerAdapter
     return robotController
   }
 
+  override fun calibrate() {
+    check(robotController.connect()) {"robotController.connect()"}
+    robotController.calibrate()
+  }
+
   override fun moveTo(coordinates: Pair<Int, Int>) {
 
     robotController.moveToCoordinates(
@@ -42,9 +47,13 @@ class RobotControllerAdapter : IRobotControllerAdapter
       /* isLandscapeOrientation */ true)
   }
 
-  override fun calibrate() {
-    check(robotController.connect()) {"robotController.connect()"}
-    robotController.calibrate()
+  override fun moveDown() {
+    robotController.moveDown()
   }
+
+  override fun moveUp() {
+    robotController.moveUp()
+  }
+
 
 }

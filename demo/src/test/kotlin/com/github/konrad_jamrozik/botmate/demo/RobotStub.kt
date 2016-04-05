@@ -13,8 +13,16 @@ class RobotStub : IRobot {
 
   val log = loggerFor(RobotStub::class.java)
 
+  override fun moveUp() {
+    log.debug("moveUp()")
+  }
+
+  override fun moveDown() {
+    log.debug("moveDown()")
+  }
+
   override fun moveTo(coordinates: Pair<Int, Int>) {
-    log.debug("moveTo()")
+    log.debug("moveTo(coordinates)")
   }
 
   override fun calibrate() {
