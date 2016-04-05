@@ -47,7 +47,7 @@ class DemoTest {
       AndroidDeviceDemo(
         AndroidDeviceWithRobot(
           AndroidDeviceStub(),
-          Robot()
+          Robot(RobotControllerAdapter())
         ),
         Nexus10Buttons()
       )
@@ -60,7 +60,7 @@ class DemoTest {
       AndroidDeviceDemo(
         AndroidDeviceWithRobot(
           AndroidDevice(Adb()),
-          Robot()
+          Robot(RobotControllerAdapter())
         ),
         Nexus10Buttons()
       )

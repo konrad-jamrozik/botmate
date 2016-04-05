@@ -10,12 +10,27 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../controller/libs_serialPort/Windows_7/RXTXcomm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.0.1-2" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.0.1-2" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-simple:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.zeroturnaround:zt-exec:1.8" level="project" />
+    <orderEntry type="module" module-name="controller_main" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-runtime:1.0.1-2" level="project" />
     <orderEntry type="library" name="Gradle: commons-io:commons-io:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.vividsolutions:jts:1.13" level="project" />
+    <orderEntry type="library" name="Gradle: com.beust:jcommander:1.35" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.codehaus.groovy:groovy-all:2.4.6" level="project" />
   </component>
 </module>

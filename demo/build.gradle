@@ -16,6 +16,8 @@ dependencies {
   compile 'org.slf4j:slf4j-api:1.7.20'
   compile 'org.slf4j:slf4j-simple:1.7.20'
   compile 'org.zeroturnaround:zt-exec:1.8'
+
+  compile project(":controller")
 }
 
 test.configure {
