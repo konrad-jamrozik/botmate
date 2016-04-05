@@ -9,16 +9,11 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceStub : IAndroidDevice {
-
-  val log = loggerFor(AndroidDeviceStub::class.java)
-
-  override fun press(button: IButton) {
-    log.debug("press()")
-  }
-
-  override fun setup() {
-    log.debug("setup()")
-  }
+// KJA to implement all Nexus10Buttons
+// apps button: adb.tap(x = 1280, y = 1420)
+// home button: adb.pressHome()
+class Button : IButton {
+  override val coordinates: Pair<Int, Int>
+    get() = Pair(100, 100)
 
 }

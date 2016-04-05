@@ -17,22 +17,54 @@ class DemoTest {
 
   @Test
   fun runs_demo_with_stubs() {
-    demo(AndroidDeviceWithRobot(AndroidDeviceStub(), RobotStub()))
+    demo(
+      AndroidDeviceDemo(
+        AndroidDeviceWithRobot(
+          AndroidDeviceStub(),
+          RobotStub()
+        ),
+        Nexus10Buttons()
+      )
+    )
   }
 
   @Test
   fun runs_demo_with_nexus10_and_robot_stub() {
-    demo(AndroidDeviceWithRobot(Nexus10(Adb()), RobotStub()))
+    demo(
+      AndroidDeviceDemo(
+        AndroidDeviceWithRobot(
+          AndroidDevice(Adb()),
+          RobotStub()
+        ),
+        Nexus10Buttons()
+      )
+    )
   }
 
   @Test
   fun runs_demo_with_android_device_stub_and_robot() {
-    demo(AndroidDeviceWithRobot(AndroidDeviceStub(), Robot()))
+    demo(
+      AndroidDeviceDemo(
+        AndroidDeviceWithRobot(
+          AndroidDeviceStub(),
+          Robot()
+        ),
+        Nexus10Buttons()
+      )
+    )
   }
 
   @Test
   fun runs_demo() {
-    demo(AndroidDeviceWithRobot(Nexus10(Adb()), Robot()))
+    demo(
+      AndroidDeviceDemo(
+        AndroidDeviceWithRobot(
+          AndroidDevice(Adb()),
+          Robot()
+        ),
+        Nexus10Buttons()
+      )
+    )
   }
 }
 

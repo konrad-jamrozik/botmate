@@ -10,9 +10,7 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 interface IAndroidDevice {
+  fun press(button: IButton)
+
   fun setup()
-  fun pressAppsButton()
-  fun pressKeepAppIcon()
-  fun pressHomeButton()
-  fun moveToLowerRightCorner()
 }

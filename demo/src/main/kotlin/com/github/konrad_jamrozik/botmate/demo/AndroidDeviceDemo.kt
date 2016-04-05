@@ -9,29 +9,30 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class Nexus10(val adb: IAdb) : IAndroidDevice {
+class AndroidDeviceDemo(val device: IAndroidDevice, val deviceButtons: IDeviceButtons) : IAndroidDeviceDemo {
 
-  val log = loggerFor(Nexus10::class.java)
+  val log = loggerFor(AndroidDeviceDemo::class.java)
 
   override fun setup() {
-    log.debug("Nexus10.setup()")
+    device.setup()
   }
 
   override fun pressAppsButton() {
-    log.debug("Nexus10.pressAppsButton()")
-    adb.tap(x = 1280, y = 1420)
+    log.debug("pressAppsButton()")
+    device.press(deviceButtons.appsButton)
   }
 
   override fun pressKeepAppIcon() {
-    log.debug("Nexus10.pressKeepAppIcon()")
+    log.debug("pressKeepAppIcon()")
   }
 
   override fun pressHomeButton() {
-    log.debug("Nexus10.pressHomeButton()")
-    adb.pressHome()
+    log.debug("pressHomeButton()")
+    device.press(deviceButtons.homeButton)
   }
 
   override fun moveToLowerRightCorner() {
-    log.debug("Nexus10.moveToLowerRightCorner()")
+    log.debug("moveToLowerRightCorner()")
   }
 }
+

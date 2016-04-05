@@ -13,5 +13,7 @@ interface IAdb {
   fun tap(x: Int, y: Int)
 
   fun pressHome()
+
+  fun press(button: IButton)
 }
 

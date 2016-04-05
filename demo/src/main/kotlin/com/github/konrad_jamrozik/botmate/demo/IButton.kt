@@ -9,16 +9,6 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceStub : IAndroidDevice {
-
-  val log = loggerFor(AndroidDeviceStub::class.java)
-
-  override fun press(button: IButton) {
-    log.debug("press()")
-  }
-
-  override fun setup() {
-    log.debug("setup()")
-  }
-
+interface IButton {
+  val coordinates: Pair<Int, Int>
 }

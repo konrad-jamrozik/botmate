@@ -17,6 +17,10 @@ import org.zeroturnaround.exec.ProcessExecutor
  * * stack overflow question: http://stackoverflow.com/questions/7789826/adb-shell-input-events
  */
 class Adb : IAdb {
+  override fun press(button: IButton) {
+    throw UnsupportedOperationException()
+  }
+
   override fun tap(x: Int, y: Int) {
     ProcessExecutor().command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }

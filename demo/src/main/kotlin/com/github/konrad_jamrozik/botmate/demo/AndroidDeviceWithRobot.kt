@@ -9,30 +9,18 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceWithRobot(val device: IAndroidDevice, val robot: IRobot) : IAndroidDevice {
+class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : IAndroidDevice {
 
   val log = loggerFor(AndroidDeviceWithRobot::class.java)
 
   override fun setup() {
-    device.setup()
+    log.debug("setup()")
     robot.calibrate()
+    device.setup()
   }
 
-  override fun pressAppsButton() {
-    log.debug("AndroidDeviceWithRobot.pressAppsButton()")
-    device.pressAppsButton()
-  }
-
-  override fun pressKeepAppIcon() {
-    log.debug("AndroidDeviceWithRobot.pressKeepAppIcon()")
-  }
-
-  override fun pressHomeButton() {
-    log.debug("AndroidDeviceWithRobot.pressHomeButton()")
-    device.pressHomeButton()
-  }
-
-  override fun moveToLowerRightCorner() {
-    log.debug("AndroidDeviceWithRobot.moveToLowerRightCorner()")
+  override fun press(button: IButton) {
+    robot.moveTo(button.coordinates)
+    device.press(button)
   }
 }

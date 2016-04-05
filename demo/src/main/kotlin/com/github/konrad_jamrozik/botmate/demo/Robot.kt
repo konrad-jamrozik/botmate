@@ -10,6 +10,9 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 class Robot : IRobot {
+  override fun moveTo(coordinates: Pair<Int, Int>) {
+    log.debug("Robot.moveTo()")
+  }
 
   val log = loggerFor(Robot::class.java)
 
