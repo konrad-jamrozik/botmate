@@ -1,3 +1,5 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 // Copyright (c) 2012-2016 Saarland University
 // All rights reserved.
 //
@@ -30,17 +32,11 @@ allprojects {
   }
 
   it.afterEvaluate {
-    tasks.withType(Test) {
+    tasks.withType(Test) {Test testTask ->
 
-      /* N00b Reference:
-        http://mrhaki.blogspot.de/2013/05/gradle-goodness-running-single-test.html
-        http://www.gradle.org/docs/current/dsl/org.gradle.api.tasks.testing.logging.TestLoggingContainer.html
-      */
-      testLogging {
-        events 'failed'
-      }
+      testTask.testLogging.events.add(TestLogEvent.FAILED)
 
-      afterSuite {TestDescriptor td, TestResult tr ->
+      testTask.afterSuite {TestDescriptor td, TestResult tr ->
 
         if (td.name.contains("Test Run") && tr.successfulTestCount == tr.testCount)
           println "==> All ${tr.successfulTestCount} tests passed."
