@@ -13,7 +13,7 @@ class AndroidDeviceStub : IAndroidDevice {
 
   val log = loggerFor(AndroidDeviceStub::class.java)
 
-  override fun press(button: IButton) {
+  override fun press(button: Button) {
     log.debug("press()")
   }
 

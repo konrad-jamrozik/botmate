@@ -17,7 +17,7 @@ class AndroidDevice(val adb : IAdb) : IAndroidDevice {
     log.debug("setup()")
   }
 
-  override fun press(button: IButton) {
+  override fun press(button: Button) {
     adb.press(button)
   }
 }

@@ -9,7 +9,7 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceDemo(val device: IAndroidDevice, val deviceButtons: IDeviceButtons) : IAndroidDeviceDemo {
+class AndroidDeviceDemo(val device: IAndroidDevice, val buttons: IDeviceButtons) : IAndroidDeviceDemo {
 
   val log = loggerFor(AndroidDeviceDemo::class.java)
 
@@ -19,7 +19,7 @@ class AndroidDeviceDemo(val device: IAndroidDevice, val deviceButtons: IDeviceBu
 
   override fun pressAppsButton() {
     log.debug("pressAppsButton()")
-    device.press(deviceButtons.appsButton)
+    device.press(buttons.apps)
   }
 
   override fun pressKeepAppIcon() {
@@ -28,7 +28,7 @@ class AndroidDeviceDemo(val device: IAndroidDevice, val deviceButtons: IDeviceBu
 
   override fun pressHomeButton() {
     log.debug("pressHomeButton()")
-    device.press(deviceButtons.homeButton)
+    device.press(buttons.home)
   }
 
   override fun moveToLowerRightCorner() {

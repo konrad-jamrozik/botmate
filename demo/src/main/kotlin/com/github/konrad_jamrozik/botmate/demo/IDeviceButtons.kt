@@ -10,7 +10,7 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 interface IDeviceButtons {
-  val appsButton: IButton
-  val homeButton: IButton
+  val apps: Button.Apps
+  val home: Button.Home
 }
 

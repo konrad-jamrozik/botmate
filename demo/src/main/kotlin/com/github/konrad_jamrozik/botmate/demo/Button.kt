@@ -9,11 +9,7 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-// KJA to implement all Nexus10Buttons
-// apps button: adb.tap(x = 1280, y = 1420)
-// home button: adb.pressHome()
-class Button : IButton {
-  override val coordinates: Pair<Int, Int>
-    get() = Pair(100, 100)
-
+sealed class Button(val coordinates: Pair<Int, Int>) {
+  class Apps(coordinates: Pair<Int, Int>) : Button(coordinates)
+  class Home(coordinates: Pair<Int, Int>) : Button(coordinates)
 }

@@ -10,8 +10,10 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 class Nexus10Buttons : IDeviceButtons {
-  override val appsButton: IButton
-    get() = Button()
-  override val homeButton: IButton
-    get() = Button()
+
+  override val apps: Button.Apps
+    get() = Button.Apps(Pair(1280, 1420))
+
+  override val home: Button.Home
+    get() = Button.Home(Pair(1280, 1550))
 }

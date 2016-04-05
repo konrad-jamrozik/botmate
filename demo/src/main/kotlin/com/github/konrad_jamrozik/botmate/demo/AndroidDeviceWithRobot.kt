@@ -19,7 +19,7 @@ class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : I
     device.setup()
   }
 
-  override fun press(button: IButton) {
+  override fun press(button: Button) {
     robot.moveTo(button.coordinates)
     device.press(button)
   }
