@@ -26,6 +26,7 @@ class RobotControllerAdapter : IRobotControllerAdapter
       robotConfig,
       userInputReader,
       SerialDriver(robotConfig),
+      // WISH decouple Nexus10. Move to Nexus10Buttons or related
       CoordinateMapperNexus10(robotConfig),
       RobotPathPlotterArc(robotConfig)
     )
