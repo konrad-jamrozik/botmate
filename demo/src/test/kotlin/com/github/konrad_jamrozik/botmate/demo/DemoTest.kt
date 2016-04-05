@@ -22,7 +22,7 @@ class DemoTest {
 
   @Test
   fun runs_demo_with_nexus10_and_robot_stub() {
-    demo(AndroidDeviceWithRobot(Nexus10(), RobotStub()))
+    demo(AndroidDeviceWithRobot(Nexus10(Adb()), RobotStub()))
   }
 
   @Test
@@ -32,7 +32,7 @@ class DemoTest {
 
   @Test
   fun runs_demo() {
-    demo(AndroidDeviceWithRobot(Nexus10(), Robot()))
+    demo(AndroidDeviceWithRobot(Nexus10(Adb()), Robot()))
   }
 }
 

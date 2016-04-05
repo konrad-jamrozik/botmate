@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
 
   // KJA current work
 
-  val nexus10 = Nexus10()
+  val nexus10 = Nexus10(Adb())
   // check nexus10 is available
 
   val robot = Robot()

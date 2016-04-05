@@ -20,6 +20,7 @@ class AndroidDeviceWithRobot(val device: IAndroidDevice, val robot: IRobot) : IA
 
   override fun pressAppsButton() {
     log.debug("AndroidDeviceWithRobot.pressAppsButton()")
+    device.pressAppsButton()
   }
 
   override fun pressKeepAppIcon() {
@@ -28,6 +29,7 @@ class AndroidDeviceWithRobot(val device: IAndroidDevice, val robot: IRobot) : IA
 
   override fun pressHomeButton() {
     log.debug("AndroidDeviceWithRobot.pressHomeButton()")
+    device.pressHomeButton()
   }
 
   override fun moveToLowerRightCorner() {
