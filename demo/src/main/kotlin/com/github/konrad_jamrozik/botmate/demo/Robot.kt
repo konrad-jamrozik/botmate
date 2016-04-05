@@ -11,4 +11,10 @@ package com.github.konrad_jamrozik.botmate.demo
 
 class Robot : IRobot {
 
+  val log = loggerFor(Robot::class.java)
+
+  override fun calibrate() {
+    log.debug("Robot.calibrate()")
+  }
+
 }

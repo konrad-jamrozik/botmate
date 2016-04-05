@@ -14,7 +14,7 @@ class AndroidDeviceStub : IAndroidDevice {
   val log = loggerFor(AndroidDeviceStub::class.java)
 
   override fun setup() {
-    log.debug("setup(): stub")
+    log.debug("AndroidDeviceStub.setup()")
   }
 
   override fun pressAppsButton() {

@@ -10,4 +10,5 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 interface IRobot {
+  fun calibrate()
 }

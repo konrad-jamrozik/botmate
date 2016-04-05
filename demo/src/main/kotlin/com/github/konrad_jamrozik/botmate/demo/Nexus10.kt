@@ -14,7 +14,7 @@ class Nexus10 : IAndroidDevice {
   val log = loggerFor(Nexus10::class.java)
 
   override fun setup() {
-    log.debug("calibrate()")
+    log.debug("Nexus10.setup()")
   }
 
   override fun pressAppsButton() {

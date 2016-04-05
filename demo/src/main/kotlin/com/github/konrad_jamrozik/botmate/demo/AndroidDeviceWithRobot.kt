@@ -9,27 +9,28 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceWithRobot(val androidDevice: IAndroidDevice, val robot: IRobot) : IAndroidDevice {
+class AndroidDeviceWithRobot(val device: IAndroidDevice, val robot: IRobot) : IAndroidDevice {
 
   val log = loggerFor(AndroidDeviceWithRobot::class.java)
 
   override fun setup() {
-    log.debug("setup(): not yet implemented")
+    device.setup()
+    robot.calibrate()
   }
 
   override fun pressAppsButton() {
-    log.debug("pressAppsButton(): not yet implemented")
+    log.debug("AndroidDeviceWithRobot.pressAppsButton()")
   }
 
   override fun pressKeepAppIcon() {
-    log.debug("pressKeepAppIcon(): not yet implemented")
+    log.debug("AndroidDeviceWithRobot.pressKeepAppIcon()")
   }
 
   override fun pressHomeButton() {
-    log.debug("pressHomeButton(): not yet implemented")
+    log.debug("AndroidDeviceWithRobot.pressHomeButton()")
   }
 
   override fun moveToLowerRightCorner() {
-    log.debug("moveToLowerRightCorner(): not yet implemented")
+    log.debug("AndroidDeviceWithRobot.moveToLowerRightCorner()")
   }
 }
