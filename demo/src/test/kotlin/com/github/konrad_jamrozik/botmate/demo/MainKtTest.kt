@@ -13,7 +13,6 @@ import org.junit.Test
 
 class MainKtTest {
 
-  // KJA add to gradlew test + "all tests passed" status info
   @Test
   fun mainTest() {
     println("test!")
