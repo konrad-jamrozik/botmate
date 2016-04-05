@@ -20,22 +20,22 @@ fun main(args: Array<String>) {
   val robot = Robot()
   // check port is available, i.e. robot can be contacted
 
-  val nexus10WithRobot = Nexus10WithRobot(nexus10, robot)
+  val nexus10WithRobot = AndroidDeviceWithRobot(nexus10, robot)
 
-  main(nexus10WithRobot)
+  demo(nexus10WithRobot)
 }
 
-fun main(androidDeviceWithRobot: IAndroidDeviceWithRobot) {
-  androidDeviceWithRobot.calibrate()
-  androidDeviceWithRobot.pressAppsButton()
-  androidDeviceWithRobot.pressKeepAppIcon()
+fun demo(androidDevice: IAndroidDevice) {
+  androidDevice.setup()
+  androidDevice.pressAppsButton()
+  androidDevice.pressKeepAppIcon()
   // press take a note
   // press keys: h e l l o
   // press outside to close
   // press on "Hello" note
   // press options in upper right corner
   // press delete
-  androidDeviceWithRobot.pressHomeButton()
-  androidDeviceWithRobot.moveToLowerRightCorner()
+  androidDevice.pressHomeButton()
+  androidDevice.moveToLowerRightCorner()
 }
 

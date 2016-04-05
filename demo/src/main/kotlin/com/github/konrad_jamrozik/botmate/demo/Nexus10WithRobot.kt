@@ -9,8 +9,8 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class Nexus10WithRobot(nexus10: Nexus10, robot: Robot) : IAndroidDeviceWithRobot {
-  override fun calibrate() {
+class Nexus10WithRobot(nexus10: Nexus10, robot: Robot) : IAndroidDevice {
+  override fun setup() {
     throw UnsupportedOperationException("not implemented")
   }
 

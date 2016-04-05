@@ -9,6 +9,10 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class Robot : IRobot {
-
+interface IAndroidDevice {
+  fun setup()
+  fun pressAppsButton()
+  fun pressKeepAppIcon()
+  fun pressHomeButton()
+  fun moveToLowerRightCorner()
 }

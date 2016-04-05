@@ -9,6 +9,5 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class Robot : IRobot {
-
+interface IRobot {
 }

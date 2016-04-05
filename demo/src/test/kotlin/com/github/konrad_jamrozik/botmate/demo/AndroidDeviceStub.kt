@@ -9,27 +9,28 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class Nexus10 : IAndroidDevice {
+class AndroidDeviceStub : IAndroidDevice {
 
-  val log = loggerFor(Nexus10::class.java)
+  val log = loggerFor(AndroidDeviceStub::class.java)
 
   override fun setup() {
-    log.debug("calibrate()")
+    log.debug("setup(): stub")
   }
 
   override fun pressAppsButton() {
-    log.debug("pressAppsButton()")
+    log.debug("pressAppsButton(): stub")
   }
 
   override fun pressKeepAppIcon() {
-    log.debug("pressKeepAppIcon()")
+    log.debug("pressKeepAppIcon(): stub")
   }
 
   override fun pressHomeButton() {
-    log.debug("pressHomeButton()")
+    log.debug("pressHomeButton(): stub")
   }
 
   override fun moveToLowerRightCorner() {
-    log.debug("moveToLowerRightCorner()")
+    log.debug("moveToLowerRightCorner(): stub")
   }
+
 }
