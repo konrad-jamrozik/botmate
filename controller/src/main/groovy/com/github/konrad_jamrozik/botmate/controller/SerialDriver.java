@@ -36,7 +36,7 @@ public class SerialDriver implements ISerialDriver
 
   private static Logger log = LoggerFactory.getLogger(SerialDriver.class.getSimpleName());
 
-  SerialDriver(RobotConfiguration robotConfig)
+  public SerialDriver(RobotConfiguration robotConfig)
   {
     this.robotConfig = robotConfig;
   }
