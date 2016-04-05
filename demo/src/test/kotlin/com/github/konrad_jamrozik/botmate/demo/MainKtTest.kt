@@ -7,6 +7,8 @@
 //
 // github.com/konrad-jamrozik/botmate
 
+package com.github.konrad_jamrozik.botmate.demo
+
 import org.junit.Test
 
 class MainKtTest {
@@ -19,26 +21,28 @@ class MainKtTest {
   }
 }
 
-// KJA replace printlns with slf4j
 class Nexus10WithRobotSimulator : IAndroidDeviceWithRobot {
+
+  val log = loggerFor(Nexus10WithRobotSimulator::class.java)
+
   override fun calibrate() {
-    println("calibrate()")
+    log.debug("calibrate()")
   }
 
   override fun pressAppsButton() {
-    println("pressAppsButton()")
+    log.debug("pressAppsButton()")
   }
 
   override fun pressKeepAppIcon() {
-    println("pressKeepAppIcon()")
+    log.debug("pressKeepAppIcon()")
   }
 
   override fun pressHomeButton() {
-    println("pressHomeButton()")
+    log.debug("pressHomeButton()")
   }
 
   override fun moveToLowerRightCorner() {
-    println("moveToLowerRightCorner()")
+    log.debug("moveToLowerRightCorner()")
   }
 
 }
