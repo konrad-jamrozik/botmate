@@ -33,7 +33,7 @@ public class RobotPathPlotterArc implements IRobotPathPlotter
 
   private static Logger log = LoggerFactory.getLogger(SerialDriver.class.getSimpleName());
 
-  RobotPathPlotterArc(RobotConfiguration robotConfig)
+  public RobotPathPlotterArc(RobotConfiguration robotConfig)
   {
     this.robotConfig = robotConfig;
   }

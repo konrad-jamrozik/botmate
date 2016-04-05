@@ -9,9 +9,6 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-import com.github.konrad_jamrozik.botmate.controller.ISerialDriver
-import com.github.konrad_jamrozik.botmate.controller.RobotConfiguration
-import com.github.konrad_jamrozik.botmate.controller.SerialDriver
 import org.junit.Test
 
 class DemoTest {
@@ -68,12 +65,5 @@ class DemoTest {
         Nexus10Buttons()
       )
     )
-  }
-
-  @Test
-  fun confusingKotlinMessage() {
-    // If the SerialDriver constructor doesn't have "public" modifier, getting here red squiggle on SerialDriver with message:
-    // Cannot access '<init>': it is 'public/*package*/' in 'SerialDriver'
-    val x : ISerialDriver = SerialDriver(RobotConfiguration())
   }
 }

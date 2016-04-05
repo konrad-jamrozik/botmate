@@ -44,7 +44,7 @@ public class CoordinateMapperNexus10 implements ICoordinateMapper
   private final float nexus10Width = 2560;
   private final float nexus10Height = 1600;
 
-  CoordinateMapperNexus10(RobotConfiguration robotConfig)
+  public CoordinateMapperNexus10(RobotConfiguration robotConfig)
   {
     this.robotConfig = robotConfig;
   }
