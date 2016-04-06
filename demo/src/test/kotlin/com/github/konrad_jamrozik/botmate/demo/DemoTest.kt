@@ -13,6 +13,8 @@ import org.junit.Test
 
 class DemoTest {
 
+  private val pressDelayMillis = 300L
+
   @Test
   fun runs_demo_with_stubs() =
     Demo(
@@ -27,7 +29,7 @@ class DemoTest {
   fun runs_demo_with_nexus10_and_robot_stub() =
     Demo(
       AndroidDeviceWithRobot(
-        AndroidDevice(Adb()),
+        AndroidDevice(Adb(), pressDelayMillis),
         RobotStub()
       ),
       DemoNexus10Buttons()
@@ -46,7 +48,7 @@ class DemoTest {
   @Test
   fun runs_demo() = Demo(
     AndroidDeviceWithRobot(
-      AndroidDevice(Adb()),
+      AndroidDevice(Adb(), pressDelayMillis),
       RobotControllerAdapter()
     ),
     DemoNexus10Buttons()

@@ -9,7 +9,7 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDevice(val adb : IAdb) : IAndroidDevice {
+class AndroidDevice(val adb: IAdb, val pressDelayMillis: Long) : IAndroidDevice {
 
   val log = loggerFor(AndroidDevice::class.java)
 
@@ -20,5 +20,6 @@ class AndroidDevice(val adb : IAdb) : IAndroidDevice {
   override fun press(button: Button) {
     log.debug("press(button)")
     adb.press(button)
+    Thread.sleep(pressDelayMillis)
   }
 }
