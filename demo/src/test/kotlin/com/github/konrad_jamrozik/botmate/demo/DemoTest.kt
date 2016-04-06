@@ -48,11 +48,5 @@ class DemoTest {
     ).run()
 
   @Test
-  fun runs_demo() = Demo(
-    AndroidDeviceWithRobot(
-      AndroidDevice(Adb(), pressDelayMillis),
-      RobotControllerAdapter()
-    ),
-    DemoNexus10Buttons()
-  ).run()
+  fun runs_demo() = main(emptyArray())
 }
