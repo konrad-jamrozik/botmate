@@ -14,54 +14,41 @@ import org.junit.Test
 class DemoTest {
 
   @Test
-  fun runs_demo_with_stubs() {
-    demo(
-      AndroidDeviceDemo(
-        AndroidDeviceWithRobot(
-          AndroidDeviceStub(),
-          RobotStub()
-        ),
-        Nexus10Buttons()
-      )
-    )
-  }
+  fun runs_demo_with_stubs() =
+    Demo(
+      AndroidDeviceWithRobot(
+        AndroidDeviceStub(),
+        RobotStub()
+      ),
+      DemoNexus10Buttons()
+    ).run()
 
   @Test
-  fun runs_demo_with_nexus10_and_robot_stub() {
-    demo(
-      AndroidDeviceDemo(
-        AndroidDeviceWithRobot(
-          AndroidDevice(Adb()),
-          RobotStub()
-        ),
-        Nexus10Buttons()
-      )
-    )
-  }
+  fun runs_demo_with_nexus10_and_robot_stub() =
+    Demo(
+      AndroidDeviceWithRobot(
+        AndroidDevice(Adb()),
+        RobotStub()
+      ),
+      DemoNexus10Buttons()
+    ).run()
 
   @Test
-  fun runs_demo_with_android_device_stub_and_robot() {
-    demo(
-      AndroidDeviceDemo(
-        AndroidDeviceWithRobot(
-          AndroidDeviceStub(),
-          Robot(RobotControllerAdapter())
-        ),
-        Nexus10Buttons()
-      )
-    )
-  }
+  fun runs_demo_with_android_device_stub_and_robot() =
+    Demo(
+      AndroidDeviceWithRobot(
+        AndroidDeviceStub(),
+        Robot(RobotControllerAdapter())
+      ),
+      DemoNexus10Buttons()
+    ).run()
 
   @Test
-  fun runs_demo() {
-    demo(
-      AndroidDeviceDemo(
-        AndroidDeviceWithRobot(
-          AndroidDevice(Adb()),
-          Robot(RobotControllerAdapter())
-        ),
-        Nexus10Buttons()
-      )
-    )
-  }
+  fun runs_demo() = Demo(
+    AndroidDeviceWithRobot(
+      AndroidDevice(Adb()),
+      Robot(RobotControllerAdapter())
+    ),
+    DemoNexus10Buttons()
+  ).run()
 }

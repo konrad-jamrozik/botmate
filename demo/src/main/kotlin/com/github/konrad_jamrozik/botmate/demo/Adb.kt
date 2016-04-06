@@ -19,11 +19,8 @@ import org.zeroturnaround.exec.ProcessExecutor
 class Adb : IAdb {
   override fun press(button: Button) {
     return when (button) {
-      // KJA simplify
       is Button.Home -> pressHome()
-      is Button.Apps -> tap(button.coordinates.first, button.coordinates.second)
-      is Button.KeepApp_LaunchIcon -> tap(button.coordinates.first, button.coordinates.second)
-      is Button.KeepApp_TakeANote -> tap(button.coordinates.first, button.coordinates.second)
+      else -> tap(button.coordinates.first, button.coordinates.second)
     }
   }
 

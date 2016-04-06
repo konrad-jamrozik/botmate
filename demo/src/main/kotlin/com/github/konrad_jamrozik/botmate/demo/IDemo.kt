@@ -9,10 +9,8 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-interface IDeviceButtons {
-  val apps: Button.Apps
-  val home: Button.Home
-  val keepApp_LaunchIcon: Button.KeepApp_LaunchIcon
-  val keepApp_TakeANote: Button.KeepApp_TakeANote
+interface IDemo {
+
+  fun run()
 }
 
