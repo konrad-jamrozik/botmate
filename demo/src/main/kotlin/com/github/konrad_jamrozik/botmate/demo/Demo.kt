@@ -12,8 +12,9 @@ package com.github.konrad_jamrozik.botmate.demo
 fun demo(androidDeviceDemo: IAndroidDeviceDemo) {
   androidDeviceDemo.setup()
   androidDeviceDemo.pressAppsButton()
-  androidDeviceDemo.pressKeepAppIcon()
-  // press take a note
+  androidDeviceDemo.pressKeepAppLaunchIcon()
+  androidDeviceDemo.pressKeepAppTakeANote()
+  // KJA current work
   // press keys: h e l l o
   // press outside to close
   // press on "Hello" note
