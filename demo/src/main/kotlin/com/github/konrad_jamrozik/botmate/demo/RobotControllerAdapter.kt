@@ -13,7 +13,7 @@ import com.github.konrad_jamrozik.botmate.controller.*
 import java.io.InputStreamReader
 import kotlin.Pair
 
-class RobotControllerAdapter : IRobotControllerAdapter
+class RobotControllerAdapter : IRobot
 {
   private val robotController: IRobotController by lazy { buildRobotController() }
 

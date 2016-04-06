@@ -38,7 +38,7 @@ class DemoTest {
     Demo(
       AndroidDeviceWithRobot(
         AndroidDeviceStub(),
-        Robot(RobotControllerAdapter())
+        RobotControllerAdapter()
       ),
       DemoNexus10Buttons()
     ).run()
@@ -47,7 +47,7 @@ class DemoTest {
   fun runs_demo() = Demo(
     AndroidDeviceWithRobot(
       AndroidDevice(Adb()),
-      Robot(RobotControllerAdapter())
+      RobotControllerAdapter()
     ),
     DemoNexus10Buttons()
   ).run()
