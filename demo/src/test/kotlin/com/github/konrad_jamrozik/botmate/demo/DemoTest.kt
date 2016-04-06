@@ -13,7 +13,7 @@ import org.junit.Test
 
 class DemoTest {
 
-  private val pressDelayMillis = 300L
+  private val pressDelayMillis = 600L
 
   @Test
   fun runs_demo_with_stubs() =

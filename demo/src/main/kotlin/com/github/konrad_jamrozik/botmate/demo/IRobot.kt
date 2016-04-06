@@ -17,4 +17,6 @@ interface IRobot {
   fun moveDown()
 
   fun moveUp()
+
+  fun moveToLowerRightCorner()
 }

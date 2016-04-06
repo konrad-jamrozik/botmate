@@ -13,12 +13,20 @@ class AndroidDeviceStub : IAndroidDevice {
 
   val log = loggerFor(AndroidDeviceStub::class.java)
 
-  override fun press(button: Button) {
-    log.debug("press()")
-  }
-
   override fun setup() {
     log.debug("setup()")
+  }
+
+  override fun press(button: Button) {
+    log.debug("press(button)")
+  }
+
+  override fun reset() {
+    log.debug("reset()")
+  }
+
+  override fun delay() {
+    log.debug("delay()")
   }
 
 }

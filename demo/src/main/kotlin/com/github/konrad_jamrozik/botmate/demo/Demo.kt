@@ -25,13 +25,18 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo 
     pressL()
     pressO()
     pressExclamationMark()
-    // KJA current work
-    // press outside to close
-    // press on "Hello" note
-    // press options in upper right corner
-    // press delete
+    pressUpperRightBackground()
+    pressUpperLeftNote()
+    pressNoteUpperRightMenu()
+    pressNoteMenuDelete()
+    delay()
     pressHomeButton()
-    moveToLowerRightCorner()
+    reset()
+  }
+
+  private fun delay() {
+    log.debug("delay()")
+    device.delay()
   }
 
   fun setup() {
@@ -84,8 +89,29 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo 
     device.press(buttons.keyboard_ExclamationMark)
   }
 
-  fun moveToLowerRightCorner() {
-    log.debug("moveToLowerRightCorner()")
+  fun pressUpperRightBackground() {
+    log.debug("pressUpperRightBackground()")
+    device.press(buttons.keepApp_UpperRightBackground)
+  }
+
+  fun pressUpperLeftNote() {
+    log.debug("pressUpperLeftNote()")
+    device.press(buttons.keepApp_UpperLeftNote)
+  }
+
+  fun pressNoteUpperRightMenu() {
+    log.debug("pressNoteUpperRightMenu()")
+    device.press(buttons.keepApp_NoteUpperRightMenu)
+  }
+
+  fun pressNoteMenuDelete() {
+    log.debug("pressNoteMenuDelete()")
+    device.press(buttons.keepApp_NoteMenuDelete)
+  }
+
+  fun reset() {
+    log.debug("reset()")
+    device.reset()
   }
 }
 

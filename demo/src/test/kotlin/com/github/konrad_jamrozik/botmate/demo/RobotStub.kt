@@ -28,4 +28,9 @@ class RobotStub : IRobot {
   override fun calibrate() {
     log.debug("calibrate()")
   }
+
+  override fun moveToLowerRightCorner() {
+    log.debug("moveToLowerRightCorner()")
+  }
+
 }

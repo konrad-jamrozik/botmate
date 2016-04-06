@@ -55,5 +55,10 @@ class RobotControllerAdapter : IRobot
     robotController.moveUp()
   }
 
+  override fun moveToLowerRightCorner() {
+    // WISH unhardcode coordinates
+    robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
+  }
+
 
 }

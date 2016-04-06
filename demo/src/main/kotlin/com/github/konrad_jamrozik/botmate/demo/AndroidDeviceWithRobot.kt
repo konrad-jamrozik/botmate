@@ -20,9 +20,21 @@ class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : I
   }
 
   override fun press(button: Button) {
+    log.debug("press(button)")
     robot.moveTo(button.coordinates)
     robot.moveDown()
     device.press(button)
     robot.moveUp()
   }
+
+  override fun reset() {
+    log.debug("reset()")
+    robot.moveToLowerRightCorner()
+  }
+
+  override fun delay() {
+    log.debug("delay()")
+    device.delay()
+  }
+
 }
