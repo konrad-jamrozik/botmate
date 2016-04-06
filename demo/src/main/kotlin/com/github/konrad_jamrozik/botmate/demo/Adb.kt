@@ -25,7 +25,6 @@ class Adb : IAdb {
   }
 
   override fun tap(x: Int, y: Int) {
-    // WISH clean up logging output
     ProcessExecutor().command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }
 

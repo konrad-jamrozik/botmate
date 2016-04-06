@@ -32,9 +32,4 @@ class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : I
     robot.moveToLowerRightCorner()
   }
 
-  override fun delay() {
-    log.debug("delay()")
-    device.delay()
-  }
-
 }

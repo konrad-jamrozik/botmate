@@ -14,5 +14,4 @@ interface IAndroidDevice {
   fun press(button: Button)
   fun reset()
 
-  fun delay()
 }

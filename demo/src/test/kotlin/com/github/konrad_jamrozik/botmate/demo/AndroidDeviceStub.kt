@@ -25,8 +25,4 @@ class AndroidDeviceStub : IAndroidDevice {
     log.debug("reset()")
   }
 
-  override fun delay() {
-    log.debug("delay()")
-  }
-
 }

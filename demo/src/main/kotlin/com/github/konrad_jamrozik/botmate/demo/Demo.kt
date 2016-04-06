@@ -9,7 +9,9 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
+// WISH clean up logging output
 // WISH document everything
+
 class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo {
 
   val log = loggerFor(Demo::class.java)
@@ -26,6 +28,7 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo 
     pressO()
     pressExclamationMark()
     pressUpperRightBackground()
+    delay()
     pressUpperLeftNote()
     pressNoteUpperRightMenu()
     pressNoteMenuDelete()
@@ -36,7 +39,7 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo 
 
   private fun delay() {
     log.debug("delay()")
-    device.delay()
+    Thread.sleep(1000)
   }
 
   fun setup() {
