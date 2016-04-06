@@ -47,3 +47,16 @@ task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
 
   it.filter.includeTest "*DemoTest", "runs_demo"
 }
+
+//region application plugin
+
+apply plugin: 'application'
+
+mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
+
+apply from: project(":controller").file("serialPortLib.gradle")
+assert project.hasProperty("serialPortLibDir")
+
+applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortLibDir}"]
+
+//endregion application plugin
