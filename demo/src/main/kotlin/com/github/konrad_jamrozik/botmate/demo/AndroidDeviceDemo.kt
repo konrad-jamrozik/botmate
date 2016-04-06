@@ -24,8 +24,14 @@ class AndroidDeviceDemo(val device: IAndroidDevice, val buttons: IDeviceButtons)
     device.press(buttons.apps)
   }
 
-  override fun pressKeepAppIcon() {
-    log.debug("pressKeepAppIcon()")
+  override fun pressKeepAppLaunchIcon() {
+    log.debug("pressKeepAppLaunchIcon()")
+    device.press(buttons.keepApp_LaunchIcon)
+  }
+
+  override fun pressKeepAppTakeANote() {
+    log.debug("pressKeepAppTakeANote()")
+    device.press(buttons.keepApp_TakeANote)
   }
 
   override fun pressHomeButton() {
