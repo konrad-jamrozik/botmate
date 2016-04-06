@@ -25,7 +25,7 @@ public class RobotConfiguration
     "The number of segments from which the arcs followed by the robot are composed of.")
   public int robotArcSegmentCount = 30;
 
-  // WISH decouple Nexus10. Move to Nexus10Buttons or related
+  // KJA decouple Nexus10. Move to Nexus10Buttons or related
   @Parameter(names = {"-robotBackButtonLandscapeX"}, description =
     "The X coordinate value of the back button in landscape mode required by the robot.")
   public int robotBackButtonLandscapeX = 109;

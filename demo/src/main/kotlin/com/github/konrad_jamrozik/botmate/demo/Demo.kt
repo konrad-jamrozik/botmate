@@ -9,8 +9,8 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-// WISH clean up logging output
-// WISH document everything
+// KJA clean up logging output
+// KJA document everything
 
 class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo {
 

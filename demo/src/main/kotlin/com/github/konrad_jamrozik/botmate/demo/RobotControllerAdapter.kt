@@ -26,7 +26,7 @@ class RobotControllerAdapter : IRobot
       robotConfig,
       userInputReader,
       SerialDriver(robotConfig),
-      // WISH decouple Nexus10. Move to Nexus10Buttons or related
+      // KJA decouple Nexus10. Move to Nexus10Buttons or related
       CoordinateMapperNexus10(robotConfig),
       RobotPathPlotterArc(robotConfig)
     )
@@ -56,7 +56,7 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun moveToLowerRightCorner() {
-    // WISH unhardcode coordinates
+    // KJA unhardcode coordinates
     robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
   }
 

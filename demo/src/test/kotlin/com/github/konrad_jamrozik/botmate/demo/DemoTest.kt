@@ -13,6 +13,8 @@ import org.junit.Test
 
 class DemoTest {
 
+  // KJA add bash script to run demo
+
   private val pressDelayMillis = 0L
 
   @Test
