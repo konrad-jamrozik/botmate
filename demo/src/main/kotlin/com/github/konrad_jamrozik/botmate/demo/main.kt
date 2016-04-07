@@ -9,16 +9,22 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
+import org.slf4j.LoggerFactory
+
 fun main(args: Array<String>) {
 
-  if (args.contains("stubRobot") && args.contains("stubDevice"))
+  if (args.contains("stubBoth"))
     runDemoWithDeviceStubAndRobotStub()
   else if (args.contains("stubRobot"))
     runDemoWithRobotStub()
   else if (args.contains("stubDevice"))
     runDemoWithDeviceStub()
-  else
+  else if (args.contains("demo"))
     runDemoFull()
+  else {
+    val log = LoggerFactory.getLogger("main")
+    log.info("Possible arguments: demo | stubRobot | stubDevice | stubBoth")
+  }
 }
 
 private val pressDelayMillis = 0L

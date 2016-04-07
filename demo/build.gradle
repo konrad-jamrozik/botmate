@@ -20,6 +20,12 @@ dependencies {
   compile project(":controller")
 }
 
+apply from: project(":controller").file("serialPortLib.gradle")
+assert project.hasProperty("serialPortNativeLibDir")
+
+tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]}
+
+apply from: "application.gradle"
 
 test.configure {
   filter.includeTest "*DemoTest", "runs_demo_with_device_stub_and_robot_stub"
@@ -43,13 +49,3 @@ task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
   it.filter.includeTest "*DemoTest", "runs_demo_full"
 }
 
-apply from: project(":controller").file("serialPortLib.gradle")
-assert project.hasProperty("serialPortNativeLibDir")
-
-tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]}
-
-//region application plugin
-apply plugin: 'application'
-mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
-applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]
-//endregion application plugin
