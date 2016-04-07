@@ -7,7 +7,7 @@
       </pattern>
     </extension>
     <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.controller.RobotInteractiveTester" />
-    <option name="VM_PARAMETERS" value="-ea -Djava.library.path=C:\my\local\repos\github\botmate\controller\libs_serialPort\Windows_7" />
+    <option name="VM_PARAMETERS" value="-ea -Djava.library.path=C:\my\local\repos\github\botmate\controller\libs_serialPort\Windows" />
     <option name="PROGRAM_PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />

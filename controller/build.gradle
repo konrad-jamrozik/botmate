@@ -16,7 +16,8 @@ compileJava.sourceCompatibility = JavaVersion.VERSION_1_8
 compileJava.targetCompatibility = JavaVersion.VERSION_1_8
 
 apply from: 'serialPortLib.gradle'
-assert project.hasProperty("serialPortLibDir")
+assert project.hasProperty("serialPortLibJar")
+assert project.hasProperty("serialPortNativeLibDir")
 
 dependencies {
 
@@ -28,5 +29,6 @@ dependencies {
   compile 'org.slf4j:slf4j-simple:1.7.20'
   compile 'org.codehaus.groovy:groovy-all:2.4.6'
 
-  compile fileTree(dir: serialPortLibDir, include: '*.jar')
+  compile files(serialPortLibJar)
+  compile fileTree(dir: serialPortNativeLibDir, include: '*.jar')
 }

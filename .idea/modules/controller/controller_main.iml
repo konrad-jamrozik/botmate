@@ -13,7 +13,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../controller/libs_serialPort/Windows_7/RXTXcomm.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../controller/libs_serialPort/RXTXcomm.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

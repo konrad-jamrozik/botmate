@@ -24,11 +24,11 @@ class Adb : IAdb {
     }
   }
 
-  override fun tap(x: Int, y: Int) {
-    ProcessExecutor().command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
-  }
-
   override fun pressHome() {
     ProcessExecutor().command("adb", "shell", "input", "keyevent", "3").execute()
+  }
+
+  override fun tap(x: Int, y: Int) {
+    ProcessExecutor().command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }
 }

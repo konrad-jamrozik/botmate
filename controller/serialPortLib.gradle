@@ -15,11 +15,14 @@ def osIsWindows() {
 
 def projectDir = project(":controller").projectDir
 
-// Returns the path to directory of OS-dependent library required to interact with a robot through serial port.
-ext.serialPortLibDir = {
+ext.serialPortLibJar = new File("$projectDir/$libsSerialPort/RXTXcomm.jar")
+assert (serialPortLibJar as File).isFile()
+
+ext.serialPortNativeLibDir = {
   if (osIsWindows())
-  // not sure if the libraries in this dir will work on windows versions different than Windows 7 x64
-    return new File("$projectDir/$libsSerialPort/Windows_7")
+    return new File("$projectDir/$libsSerialPort/Windows")
   else
     return new File("$projectDir/$libsSerialPort/Mac_OS")
 }()
+
+assert (serialPortNativeLibDir as File).isDirectory()
