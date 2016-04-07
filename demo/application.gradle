@@ -20,27 +20,14 @@ tasks.run { JavaExec it -> it.args = ["stubBoth"] }
 
 // ---------- Distributions configuration ----------
 
-def distributions = project.extensions.getByName("distributions") as DistributionContainer
 
+def distributions = project.extensions.getByName("distributions") as DistributionContainer
 // Extract appContents CopySpec from 'main' distribution, then delete the distribution, as we will only use platform-specific
 // distros that will bundle the appContents with platform-specific native rxtx lib.
 def mainDist = distributions.findByName("main")
-CopySpec appContents = mainDist.contents
-distributions.remove(mainDist)
-tasks.remove(tasks.installDist)
-tasks.remove(tasks.distTar)
-tasks.remove(tasks.distZip)
-tasks.remove(tasks.assembleDist)
 
-CopySpec windowsNativeContents = project.copySpec { into('libNative') { from serialPortWindowsNativeLibDir } }
-CopySpec macOSNativeContents = project.copySpec { into('libNative') { from serialPortMacOSNativeLibDir } }
+CopySpec windowsNativeContents = project.copySpec {into('libNative_windows') {from serialPortWindowsNativeLibDir}}
+CopySpec macOSNativeContents = project.copySpec {into('libNative_macOS') {from serialPortMacOSNativeLibDir}}
 
-distributions.create("Windows") {
-  it.contents.with(appContents)
-  it.contents.with(windowsNativeContents)
-}
-
-distributions.create("MacOS") {
-  it.contents.with(appContents)
-  it.contents.with(macOSNativeContents)
-}
+mainDist.contents.with(windowsNativeContents)
+mainDist.contents.with(macOSNativeContents)
