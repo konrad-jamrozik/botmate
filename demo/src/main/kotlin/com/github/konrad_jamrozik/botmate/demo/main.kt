@@ -57,6 +57,7 @@ fun runDemoWithDeviceStubAndRobotStub() {
       AndroidDeviceStub(),
       RobotStub()
     ),
-    DemoNexus10Buttons()
+    DemoNexus10Buttons(), 
+    delayMillis = 0
   ).run()
 }

@@ -12,7 +12,7 @@ package com.github.konrad_jamrozik.botmate.demo
 // KJA clean up logging output
 // KJA document everything
 
-class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo {
+class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val delayMillis: Long = 1000) : IDemo {
 
   val log = loggerFor(Demo::class.java)
 
@@ -39,7 +39,7 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons) : IDemo 
 
   private fun delay() {
     log.debug("delay()")
-    Thread.sleep(1000)
+    Thread.sleep(delayMillis)
   }
 
   fun setup() {
