@@ -16,7 +16,7 @@ def osIsWindows() {
 def projectDir = project(":controller").projectDir
 
 ext.serialPortLibJar = new File("$projectDir/$libsSerialPort/RXTXcomm.jar")
-assert (serialPortLibJar as File).isFile()
+assert serialPortLibJar.isFile()
 
 ext.serialPortNativeLibDir = {
   if (osIsWindows())
@@ -25,4 +25,4 @@ ext.serialPortNativeLibDir = {
     return new File("$projectDir/$libsSerialPort/Mac_OS")
 }()
 
-assert (serialPortNativeLibDir as File).isDirectory()
+assert serialPortNativeLibDir.isDirectory()

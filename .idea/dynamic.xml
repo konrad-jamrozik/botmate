@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DynamicElementsStorage">
+    <option name="containingClasses">
+      <map>
+        <entry key="java.lang.Object">
+          <value>
+            <DClassElement>
+              <option name="name" value="java.lang.Object" />
+              <option name="myName" value="java.lang.Object" />
+              <option name="myProperties">
+                <set>
+                  <DPropertyElement>
+                    <option name="name" value="kotlin_version" />
+                    <option name="static" value="false" />
+                    <option name="type" value="java.lang.String" />
+                    <option name="myType" value="java.lang.String" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="kotlin_version" />
+                  </DPropertyElement>
+                  <DPropertyElement>
+                    <option name="name" value="serialPortLibJar" />
+                    <option name="static" value="false" />
+                    <option name="type" value="java.io.File" />
+                    <option name="myType" value="java.io.File" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="serialPortLibJar" />
+                  </DPropertyElement>
+                  <DPropertyElement>
+                    <option name="name" value="serialPortNativeLibDir" />
+                    <option name="static" value="false" />
+                    <option name="type" value="java.io.File" />
+                    <option name="myType" value="java.io.File" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="serialPortNativeLibDir" />
+                  </DPropertyElement>
+                </set>
+              </option>
+            </DClassElement>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

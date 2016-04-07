@@ -21,7 +21,7 @@ dependencies {
 }
 
 apply from: project(":controller").file("serialPortLib.gradle")
-assert (serialPortNativeLibDir as File).isDirectory()
+assert serialPortNativeLibDir.isDirectory()
 
 tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]}
 

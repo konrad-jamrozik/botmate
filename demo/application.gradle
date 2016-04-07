@@ -7,7 +7,7 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-assert (serialPortNativeLibDir as File).isDirectory()
+assert serialPortNativeLibDir.isDirectory()
 
 apply plugin: 'application'
 mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"

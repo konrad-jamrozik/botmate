@@ -16,8 +16,8 @@ compileJava.sourceCompatibility = JavaVersion.VERSION_1_8
 compileJava.targetCompatibility = JavaVersion.VERSION_1_8
 
 apply from: 'serialPortLib.gradle'
-assert (serialPortLibJar as File).isFile()
-assert (serialPortNativeLibDir as File).isDirectory()
+assert serialPortLibJar.isFile()
+assert serialPortNativeLibDir.isDirectory()
 
 dependencies {
 
