@@ -13,40 +13,15 @@ import org.junit.Test
 
 class DemoTest {
 
-  // KJA add bash script to run demo
-
-  private val pressDelayMillis = 0L
+  @Test
+  fun runs_demo_with_device_stub_and_robot_stub() = runDemoWithDeviceStubAndRobotStub()
+  
+  @Test
+  fun runs_demo_with_robot_stub() = runDemoWithRobotStub()
 
   @Test
-  fun runs_demo_with_stubs() =
-    Demo(
-      AndroidDeviceWithRobot(
-        AndroidDeviceStub(),
-        RobotStub()
-      ),
-      DemoNexus10Buttons()
-    ).run()
+  fun runs_demo_with_device_stub() = runDemoWithDeviceStub()
 
   @Test
-  fun runs_demo_with_nexus10_and_robot_stub() =
-    Demo(
-      AndroidDeviceWithRobot(
-        AndroidDevice(Adb(), pressDelayMillis),
-        RobotStub()
-      ),
-      DemoNexus10Buttons()
-    ).run()
-
-  @Test
-  fun runs_demo_with_android_device_stub_and_robot() =
-    Demo(
-      AndroidDeviceWithRobot(
-        AndroidDeviceStub(),
-        RobotControllerAdapter()
-      ),
-      DemoNexus10Buttons()
-    ).run()
-
-  @Test
-  fun runs_demo() = main(emptyArray())
+  fun runs_demo_full() = runDemoFull()
 }

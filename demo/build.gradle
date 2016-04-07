@@ -20,43 +20,36 @@ dependencies {
   compile project(":controller")
 }
 
+
 test.configure {
-  filter.includeTest "*DemoTest", "runs_demo_with_stubs"
+  filter.includeTest "*DemoTest", "runs_demo_with_device_stub_and_robot_stub"
 }
 
 task testDevice(type: Test, dependsOn: "testClasses") { Test it ->
-
   it.group = "verification"
   it.description = "Tests the demo with real Nexus 10 and with stubbed (faked) robot implementation."
-
-  it.filter.includeTest "*DemoTest", "runs_demo_with_nexus10_and_robot_stub"
+  it.filter.includeTest "*DemoTest", "runs_demo_with_robot_stub"
 }
 
 task testRobot(type: Test, dependsOn: "testClasses") { Test it ->
-
   it.group = "verification"
   it.description = "Tests the demo with stubbed (faked) Android device implementation and with actual robot."
-
-  it.filter.includeTest "*DemoTest", "runs_demo_with_android_device_stub_and_robot"
+  it.filter.includeTest "*DemoTest", "runs_demo_with_device_stub"
 }
 
 task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
-
   it.group = "verification"
   it.description = "Tests the demo with real Nexus 10 and with actual robot."
-
-  it.filter.includeTest "*DemoTest", "runs_demo"
+  it.filter.includeTest "*DemoTest", "runs_demo_full"
 }
-
-//region application plugin
-
-apply plugin: 'application'
-
-mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
 
 apply from: project(":controller").file("serialPortLib.gradle")
 assert project.hasProperty("serialPortLibDir")
 
-applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortLibDir}"]
+tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortLibDir}"]}
 
+//region application plugin
+apply plugin: 'application'
+mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
+applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortLibDir}"]
 //endregion application plugin
