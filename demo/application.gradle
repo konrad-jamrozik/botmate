@@ -22,8 +22,6 @@ tasks.run { JavaExec it -> it.args = ["stubBoth"] }
 
 
 def distributions = project.extensions.getByName("distributions") as DistributionContainer
-// Extract appContents CopySpec from 'main' distribution, then delete the distribution, as we will only use platform-specific
-// distros that will bundle the appContents with platform-specific native rxtx lib.
 def mainDist = distributions.findByName("main")
 
 CopySpec windowsNativeContents = project.copySpec {into('libNative_windows') {from serialPortWindowsNativeLibDir}}
