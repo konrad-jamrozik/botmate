@@ -34,7 +34,7 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun calibrate() {
-    check(robotController.connect()) {"robotController.connect()"}
+    check(robotController.connect()) {"check robotController.connect()"}
     robotController.calibrate()
   }
 
