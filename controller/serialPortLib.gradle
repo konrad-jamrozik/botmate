@@ -24,5 +24,16 @@ ext.serialPortNativeLibDir = {
   else
     return new File("$projectDir/$libsSerialPort/Mac_OS")
 }()
-
 assert serialPortNativeLibDir.isDirectory()
+
+ext.serialPortWindowsNativeLibDir = {
+    return new File("$projectDir/$libsSerialPort/Windows")
+}()
+assert serialPortWindowsNativeLibDir.isDirectory()
+
+ext.serialPortMacOSNativeLibDir = {
+  return new File("$projectDir/$libsSerialPort/Mac_OS")
+}()
+assert serialPortMacOSNativeLibDir.isDirectory()
+
+
