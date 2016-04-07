@@ -7,10 +7,19 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-assert project.hasProperty("serialPortNativeLibDir")
+assert (serialPortNativeLibDir as File).isDirectory()
 
 apply plugin: 'application'
 mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
 applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]
 
 tasks.run { JavaExec it -> it.args = ["stubBoth"] }
+
+
+def distributions = project.extensions.getByName("distributions") as DistributionContainer
+def mainDist = distributions.findByName("main")
+mainDist.contents { into('libNative') { from serialPortNativeLibDir } }
+
+task debug << {
+  println mainDist.contents
+}
