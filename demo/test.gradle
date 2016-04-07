@@ -1,0 +1,35 @@
+// Copyright (c) 2012-2016 Saarland University
+// All rights reserved.
+//
+// Author: Konrad Jamrozik, konrad.jamrozik@cispa.saarland
+//
+// This file is part of the "BotMate" project.
+//
+// github.com/konrad-jamrozik/botmate
+
+assert serialPortNativeLibDir.isDirectory()
+
+tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]}
+
+test.configure {
+  filter.includeTest "*DemoTest", "runs_demo_with_device_stub_and_robot_stub"
+}
+
+task testDevice(type: Test, dependsOn: "testClasses") { Test it ->
+  it.group = "verification"
+  it.description = "Tests the demo with real Nexus 10 and with stubbed (faked) robot implementation."
+  it.filter.includeTest "*DemoTest", "runs_demo_with_robot_stub"
+}
+
+task testRobot(type: Test, dependsOn: "testClasses") { Test it ->
+  it.group = "verification"
+  it.description = "Tests the demo with stubbed (faked) Android device implementation and with actual robot."
+  it.filter.includeTest "*DemoTest", "runs_demo_with_device_stub"
+}
+
+task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
+  it.group = "verification"
+  it.description = "Tests the demo with real Nexus 10 and with actual robot."
+  it.filter.includeTest "*DemoTest", "runs_demo_full"
+}
+

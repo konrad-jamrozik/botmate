@@ -9,12 +9,15 @@
 
 assert serialPortNativeLibDir.isDirectory()
 
+// ---------- Application configuration ----------
+
 apply plugin: 'application'
 mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
 applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]
 
 tasks.run { JavaExec it -> it.args = ["stubBoth"] }
 
+// ---------- Distributions configuration ----------
 
 def distributions = project.extensions.getByName("distributions") as DistributionContainer
 def mainDist = distributions.findByName("main")
