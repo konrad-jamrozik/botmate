@@ -9,7 +9,7 @@
 
 assert serialPortNativeLibDir.isDirectory()
 
-tasks.withType(Test) {it.jvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]}
+tasks.withType(Test) { it.systemProperty "java.library.path", serialPortNativeLibDir }
 
 test.configure {
   filter.includeTest "*DemoTest", "runs_demo_with_device_stub_and_robot_stub"
