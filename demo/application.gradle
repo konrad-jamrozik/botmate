@@ -8,6 +8,7 @@
 // github.com/konrad-jamrozik/botmate
 
 assert serialPortWindowsNativeLibDir.isDirectory()
+assert serialPortLinuxNativeLibDir.isDirectory()
 assert serialPortMacOSNativeLibDir.isDirectory()
 
 // ---------- Application configuration ----------
@@ -23,10 +24,12 @@ tasks.run { JavaExec it -> it.args = ["stubBoth"] }
 def distributions = project.extensions.getByName("distributions") as DistributionContainer
 def mainDist = distributions.findByName("main")
 
-CopySpec windowsNativeContents = project.copySpec {into('libNative_windows') {from serialPortWindowsNativeLibDir}}
-CopySpec macOSNativeContents = project.copySpec {into('libNative_macOS') {from serialPortMacOSNativeLibDir}}
+CopySpec windowsNativeContents = project.copySpec {into('libNative_Windows_x64') {from serialPortWindowsNativeLibDir}}
+CopySpec linuxNativeContents = project.copySpec {into('libNative_Linux_x86_64') {from serialPortLinuxNativeLibDir}}
+CopySpec macOSNativeContents = project.copySpec {into('libNative_MacOS') {from serialPortMacOSNativeLibDir}}
 
 mainDist.contents.with(windowsNativeContents)
+mainDist.contents.with(linuxNativeContents)
 mainDist.contents.with(macOSNativeContents)
 
 // ---------- Start scripts configuration ----------
@@ -46,12 +49,12 @@ mainDist.contents.with(macOSNativeContents)
 def scripts = tasks.startScripts as CreateStartScripts
 scripts.defaultJvmOpts = ["-ea", "-Djava.library.path=../SERIAL_PORT_NATIVE_LIB_DIR"]
 scripts.doLast { CreateStartScripts it ->
-  it.windowsScript.text = it.windowsScript.text.replace('SERIAL_PORT_NATIVE_LIB_DIR', "libNative_windows")
+  it.windowsScript.text = it.windowsScript.text.replace('SERIAL_PORT_NATIVE_LIB_DIR', "libNative_Windows_x64")
 }
 
 String NATIVE_LIB_bash_var_def ="""
 if [[ "\$OSTYPE" == "darwin"* ]]; then
-    NATIVE_LIB='libNative_macOS'
+    NATIVE_LIB='libNative_MacOS'
 else
     NATIVE_LIB='libNative_Linux_x86_64'
 fi
