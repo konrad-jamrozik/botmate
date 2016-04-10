@@ -27,6 +27,14 @@
                     <option name="myName" value="serialPortLibJar" />
                   </DPropertyElement>
                   <DPropertyElement>
+                    <option name="name" value="serialPortLinuxNativeLibDir" />
+                    <option name="static" value="false" />
+                    <option name="type" value="java.io.File" />
+                    <option name="myType" value="java.io.File" />
+                    <option name="myStatic" value="false" />
+                    <option name="myName" value="serialPortLinuxNativeLibDir" />
+                  </DPropertyElement>
+                  <DPropertyElement>
                     <option name="name" value="serialPortMacOSNativeLibDir" />
                     <option name="static" value="false" />
                     <option name="type" value="java.io.File" />

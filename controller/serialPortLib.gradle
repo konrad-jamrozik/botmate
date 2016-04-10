@@ -13,6 +13,11 @@ def osIsWindows() {
     1 else 0
 }
 
+def osIsLinux() {
+  if (System.properties['os.name'].toLowerCase().contains('nux'))
+    1 else 0
+}
+
 def projectDir = project(":controller").projectDir
 
 ext.serialPortLibJar = new File("$projectDir/$libsSerialPort/RXTXcomm.jar")
@@ -20,16 +25,23 @@ assert serialPortLibJar.isFile()
 
 ext.serialPortNativeLibDir = {
   if (osIsWindows())
-    return new File("$projectDir/$libsSerialPort/Windows")
+    return new File("$projectDir/$libsSerialPort/Windows_x64")
+  else if (osIsLinux())
+    return new File("$projectDir/$libsSerialPort/Linux_x86_64")
   else
     return new File("$projectDir/$libsSerialPort/Mac_OS")
 }()
 assert serialPortNativeLibDir.isDirectory()
 
 ext.serialPortWindowsNativeLibDir = {
-    return new File("$projectDir/$libsSerialPort/Windows")
+    return new File("$projectDir/$libsSerialPort/Windows_x64")
 }()
 assert serialPortWindowsNativeLibDir.isDirectory()
+
+ext.serialPortLinuxNativeLibDir = {
+  return new File("$projectDir/$libsSerialPort/Linux_x86_64")
+}()
+assert serialPortLinuxNativeLibDir.isDirectory()
 
 ext.serialPortMacOSNativeLibDir = {
   return new File("$projectDir/$libsSerialPort/Mac_OS")

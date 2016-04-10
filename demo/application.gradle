@@ -20,7 +20,6 @@ tasks.run { JavaExec it -> it.args = ["stubBoth"] }
 
 // ---------- Distributions configuration ----------
 
-
 def distributions = project.extensions.getByName("distributions") as DistributionContainer
 def mainDist = distributions.findByName("main")
 
@@ -29,3 +28,36 @@ CopySpec macOSNativeContents = project.copySpec {into('libNative_macOS') {from s
 
 mainDist.contents.with(windowsNativeContents)
 mainDist.contents.with(macOSNativeContents)
+
+// ---------- Start scripts configuration ----------
+
+/*
+  The start scripts are modified to pick up appropriate native rxtx libs for given OS type. The path to the native libs is
+  written out to the default JVM options in the scripts. This Gradle script first sets the native lib dir to the 
+  SERIAL_PORT_NATIVE_LIB_DIR value which then it substitutes before writing out the actual scripts.
+  
+  For Windows batch script, this Gradle script just substitutes SERIAL_PORT_NATIVE_LIB_DIR with the dir of the native rxtx lib
+  for Windows.
+  
+  For Unix shell script, this Gradle script substitutes SERIAL_PORT_NATIVE_LIB_DIR with NATIVE_LIB. NATIVE_LIB value is in turn
+  determined in the shell script itself. It distinguishes between Mac OS and Linux.
+  
+ */
+def scripts = tasks.startScripts as CreateStartScripts
+scripts.defaultJvmOpts = ["-ea", "-Djava.library.path=../SERIAL_PORT_NATIVE_LIB_DIR"]
+scripts.doLast { CreateStartScripts it ->
+  it.windowsScript.text = it.windowsScript.text.replace('SERIAL_PORT_NATIVE_LIB_DIR', "libNative_windows")
+}
+
+String NATIVE_LIB_bash_var_def ="""
+if [[ "\$OSTYPE" == "darwin"* ]]; then
+    NATIVE_LIB='libNative_macOS'
+else
+    NATIVE_LIB='libNative_Linux_x86_64'
+fi
+"""
+scripts.doLast { CreateStartScripts it ->
+  it.unixScript.text = it.unixScript.text.replace("#!/usr/bin/env bash\n","#!/usr/bin/env bash\n$NATIVE_LIB_bash_var_def")
+  it.unixScript.text = it.unixScript.text.replace('SERIAL_PORT_NATIVE_LIB_DIR', "'\$NATIVE_LIB'")
+}
+
