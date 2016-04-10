@@ -46,8 +46,11 @@ mainDist.contents.with(macOSNativeContents)
   determined in the shell script itself. It distinguishes between Mac OS and Linux.
   
  */
+
 def scripts = tasks.startScripts as CreateStartScripts
+
 scripts.defaultJvmOpts = ["-ea", "-Djava.library.path=../SERIAL_PORT_NATIVE_LIB_DIR"]
+
 scripts.doLast { CreateStartScripts it ->
   it.windowsScript.text = it.windowsScript.text.replace('SERIAL_PORT_NATIVE_LIB_DIR', "libNative_Windows_x64")
 }
