@@ -8,14 +8,18 @@
 // github.com/konrad-jamrozik/botmate
 
 String libsSerialPort = "libs_serialPort"
-def osIsWindows() {
+def boolean osIsWindows() {
   if (System.properties['os.name'].toLowerCase().contains('windows'))
-    1 else 0
+    return true 
+  else 
+    return false
 }
 
-def osIsLinux() {
+def boolean osIsLinux() {
   if (System.properties['os.name'].toLowerCase().contains('nux'))
-    1 else 0
+    return true
+  else
+    return false
 }
 
 def projectDir = project(":controller").projectDir
