@@ -9,17 +9,11 @@
 
 String libsSerialPort = "libs_serialPort"
 def boolean osIsWindows() {
-  if (System.properties['os.name'].toLowerCase().contains('windows'))
-    return true 
-  else 
-    return false
+  return (System.properties['os.name'] as String).toLowerCase().contains('windows')
 }
 
 def boolean osIsLinux() {
-  if (System.properties['os.name'].toLowerCase().contains('nux'))
-    return true
-  else
-    return false
+  return (System.properties['os.name'] as String).toLowerCase().contains('nux')
 }
 
 def projectDir = project(":controller").projectDir
