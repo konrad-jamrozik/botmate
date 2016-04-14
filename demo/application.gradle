@@ -37,7 +37,7 @@ mainDist.contents.with(macOSNativeContents)
 /*
   The start scripts are modified to pick up appropriate native rxtx libs for given OS type. The path to the native libs is
   written out to the default JVM options in the scripts. This Gradle script first sets the native lib dir to the 
-  SERIAL_PORT_NATIVE_LIB_DIR value which then it substitutes before writing out the actual scripts.
+  SERIAL_PORT_NATIVE_LIB_DIR value which then it substitutes before writing out to the actual scripts.
   
   For Windows batch script, this Gradle script just substitutes SERIAL_PORT_NATIVE_LIB_DIR with the dir of the native rxtx lib
   for Windows.

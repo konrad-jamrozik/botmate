@@ -1,5 +1,3 @@
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
 // Copyright (c) 2012-2016 Saarland University
 // All rights reserved.
 //
@@ -8,6 +6,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 // This file is part of the "BotMate" project.
 //
 // github.com/konrad-jamrozik/botmate
+
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 group 'com.github.konrad-jamrozik'
 version 'dev'
