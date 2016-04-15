@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.TooManyListenersException;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 
@@ -128,6 +129,20 @@ public class SerialDriver implements ISerialDriver
     return receive(robotConfig.robotResponseConfirmation);
   }
 
+  @Override
+  public void observeCTS()
+  {
+    serialPort.notifyOnCTS(true);
+    try
+    {
+      // KJA current work
+      serialPort.addEventListener(ev -> log.trace(serialDriver, "Got event!"));
+    } catch (TooManyListenersException e)
+    {
+      e.printStackTrace();
+    }
+  }
+  
   @Override
   public String receive(String expectedResponse) throws RobotException
   {

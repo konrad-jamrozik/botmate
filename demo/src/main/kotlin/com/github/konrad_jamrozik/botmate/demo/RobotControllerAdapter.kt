@@ -15,9 +15,9 @@ import kotlin.Pair
 
 class RobotControllerAdapter : IRobot
 {
-  private val robotController: IRobotController by lazy { buildRobotController() }
-
   private val robotConfig: RobotConfiguration by lazy { RobotConfiguration() }
+
+  private val robotController: IRobotController by lazy { buildRobotController() }
 
   private fun buildRobotController() : IRobotController {
 
@@ -26,7 +26,7 @@ class RobotControllerAdapter : IRobot
       robotConfig,
       userInputReader,
       SerialDriver(robotConfig),
-      // KJA decouple Nexus10. Move to Nexus10Buttons or related
+      // KJA2 decouple Nexus10. Move to Nexus10Buttons or related
       CoordinateMapperNexus10(robotConfig),
       RobotPathPlotterArc(robotConfig)
     )
@@ -56,7 +56,7 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun moveToLowerRightCorner() {
-    // KJA unhardcode coordinates
+    // KJA2 unhardcode coordinates
     robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
   }
 

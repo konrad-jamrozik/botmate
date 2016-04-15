@@ -14,6 +14,8 @@ public interface ISerialDriver
   Vector<String> getSerialPortNames()
 
   void connect(String serialPortName) throws RobotException
+  
+  void observeCTS()
 
   void send(String string) throws RobotException
 

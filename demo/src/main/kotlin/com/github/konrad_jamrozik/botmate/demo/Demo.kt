@@ -9,8 +9,8 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-// KJA clean up logging output
-// KJA document everything
+// KJA2 clean up logging output
+// KJA2 document everything
 
 class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val delayMillis: Long = 1000) : IDemo {
 

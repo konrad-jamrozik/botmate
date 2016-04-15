@@ -9,6 +9,8 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
+import com.github.konrad_jamrozik.botmate.controller.RobotConfiguration
+import com.github.konrad_jamrozik.botmate.controller.SerialDriver
 import org.slf4j.LoggerFactory
 
 fun main(args: Array<String>) {
@@ -57,13 +59,21 @@ fun runDemoWithRobotStub() {
   ).run()
 }
 
+private val demoWithDeviceStubAndRobotStub = Demo(
+  AndroidDeviceWithRobot(
+    AndroidDeviceStub(),
+    RobotStub()
+  ),
+  DemoNexus10Buttons(),
+  delayMillis = 0
+)
+
 fun runDemoWithDeviceStubAndRobotStub() {
-  Demo(
-    AndroidDeviceWithRobot(
-      AndroidDeviceStub(),
-      RobotStub()
-    ),
-    DemoNexus10Buttons(), 
-    delayMillis = 0
-  ).run()
+  demoWithDeviceStubAndRobotStub.run()
 }
+
+fun startListeningToButton() 
+{
+  ActivationButton(SerialDriver(RobotConfiguration()), demoWithDeviceStubAndRobotStub).listen()
+}
+
