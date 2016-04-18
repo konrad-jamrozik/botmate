@@ -30,21 +30,12 @@ fun main(args: Array<String>) {
     args.contains("stubBoth") -> Demo.withDeviceStubAndRobotStub
     else -> throw IllegalStateException()
   }
+  
   when {
     args.contains("button") -> Button.with(demo).listen() 
     args.contains("demo") -> demo.run()
+    else -> throw IllegalStateException()
   }
-}
-
-private fun checkArgs(args: Array<String>) {
-  check (
-    args.contains("button") xor args.contains("demo"),
-    { "Please provide as argument exactly one of: 'button' or 'demo' (without '')" }
-  )
-  check (
-    listOf("full", "stubRobot", "stubDevice", "stubBoth").count { args.contains(it) } == 1,
-    { "Please provide as argument exactly one of: full stubRobot stubDevice stubBoth" }
-  )
 }
 
 private fun printHelp() {
@@ -63,5 +54,16 @@ private fun printHelp() {
     info("  stubRobot  - run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
     info("  stubBoth   - run demo with fake robot and Android device.")
   }
+}
+
+private fun checkArgs(args: Array<String>) {
+  check (
+    args.contains("button") xor args.contains("demo"),
+    { "Please provide as argument exactly one of: 'button' or 'demo' (without '')" }
+  )
+  check (
+    listOf("full", "stubRobot", "stubDevice", "stubBoth").count { args.contains(it) } == 1,
+    { "Please provide as argument exactly one of: full stubRobot stubDevice stubBoth" }
+  )
 }
 
