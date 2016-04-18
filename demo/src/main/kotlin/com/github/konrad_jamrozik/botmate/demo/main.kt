@@ -16,8 +16,10 @@ import org.slf4j.LoggerFactory
 
 fun main(args: Array<String>) {
 
-  if (args.isEmpty())
+  if (args.isEmpty()) {
     printHelp()
+    return
+  }
 
   validateArgs(args)
   
@@ -48,17 +50,18 @@ private fun validateArgs(args: Array<String>) {
 private fun printHelp() {
   val log = LoggerFactory.getLogger("main")
   with(log) {
-    info("[button|demo] [full|stubDevice|stubRobot|stubBoth]")
+    info("Accepted arguments: [button|demo] [full|stubDevice|stubRobot|stubBoth]")
+    info("")
     info("Execution mode:")
-    info("button: start listening to a hardware button which will launch demo when clicked. " +
+    info("  button - start listening to a hardware button which will launch demo when clicked. " +
       "Listening stops when user presses Enter.")
-    info("demo: run demo directly.")
+    info("  demo   - run demo directly.")
     info("")
     info("demo options:")
-    info("full: run demo using actual Android device and robot.")
-    info("stubDevice: run demo as 'full', but with fake programmatic replacement instead of actual Android device.")
-    info("stubRobot: run demo as 'full', but with fake programmatic replacement instead of actual robot.")
-    info("stubBoth: run demo with fake robot and Android device")
+    info("  full       - run demo using actual Android device and robot.")
+    info("  stubDevice - run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
+    info("  stubRobot  - run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
+    info("  stubBoth   - run demo with fake robot and Android device.")
   }
 }
 
