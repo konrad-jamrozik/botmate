@@ -5,7 +5,7 @@ Author: Konrad Jamrozik, github.com/konrad-jamrozik
 Software for controlling BotMate, a robot used for showcasing test generation tools @ [cispa.saarland](https://cispa.saarland/).
 
 The robot is setup to work with Nexus 10 tablet in landscape mode. When full demo is run, it will look as
-if the robot is opens the apps screen, opens Google Keep, adds a "Hello!" note, deletes it, and goes back to home screen.
+if the robot opens the apps screen, opens Google Keep, adds a "Hello!" note, deletes it, and goes back to home screen.
 
 In reality, the tablet is controlled independently of the robot. The tablet is just synchronized with the robot to make an 
 illusion the robot clicks, not software.
