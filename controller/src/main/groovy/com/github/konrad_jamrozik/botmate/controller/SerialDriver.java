@@ -44,7 +44,7 @@ public class SerialDriver implements ISerialDriver
 
   public Vector<String> getSerialPortNames()
   {
-    log.debug("Getting serial port names.");
+    log.info("Getting serial port names.");
 
     Enumeration<CommPortIdentifier> portEnum;
     Vector<String> portVect = new Vector<>();
@@ -60,7 +60,7 @@ public class SerialDriver implements ISerialDriver
       }
     }
 
-    log.debug("Found {} port(s).", portVect.size());
+    log.info("Found {} port(s).", portVect.size());
     return portVect;
   }
 
