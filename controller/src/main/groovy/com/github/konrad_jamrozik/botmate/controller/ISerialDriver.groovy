@@ -7,7 +7,9 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-package com.github.konrad_jamrozik.botmate.controller;
+package com.github.konrad_jamrozik.botmate.controller
+
+import gnu.io.SerialPortEventListener;
 
 public interface ISerialDriver
 {
@@ -15,7 +17,7 @@ public interface ISerialDriver
 
   void connect(String serialPortName) throws RobotException
   
-  void observeCTS()
+  void observeCTS(SerialPortEventListener serialPortEventListener)
 
   void send(String string) throws RobotException
 

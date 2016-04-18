@@ -130,16 +130,15 @@ public class SerialDriver implements ISerialDriver
   }
 
   @Override
-  public void observeCTS()
+  public void observeCTS(SerialPortEventListener serialPortEventListener)
   {
     serialPort.notifyOnCTS(true);
     try
     {
-      // KJA current work
-      serialPort.addEventListener(ev -> log.trace(serialDriver, "Got event!"));
+      serialPort.addEventListener(serialPortEventListener);
     } catch (TooManyListenersException e)
     {
-      e.printStackTrace();
+      throw new IllegalStateException(e);
     }
   }
   

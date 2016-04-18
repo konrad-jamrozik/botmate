@@ -9,14 +9,13 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-// KJA2 clean up logging output
-// KJA2 document everything
 
 class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val delayMillis: Long = 1000) : IDemo {
-
+  
   val log = loggerFor(Demo::class.java)
 
   override fun run() {
+    log.info("Demo: starting.")
     setup()
     pressAppsButton()
     pressKeepAppLaunchIcon()
@@ -35,6 +34,7 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val dela
     delay()
     pressHomeButton()
     reset()
+    log.info("Demo: finished")
   }
 
   private fun delay() {

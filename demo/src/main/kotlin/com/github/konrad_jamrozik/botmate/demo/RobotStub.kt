@@ -25,12 +25,16 @@ class RobotStub : IRobot {
     log.debug("moveTo(coordinates)")
   }
 
-  override fun calibrate() {
+  override fun connectAndCalibrate() {
     log.debug("calibrate()")
   }
 
   override fun moveToLowerRightCorner() {
     log.debug("moveToLowerRightCorner()")
+  }
+  
+  override fun disconnect() {
+    log.debug("disconnect()")
   }
 
 }

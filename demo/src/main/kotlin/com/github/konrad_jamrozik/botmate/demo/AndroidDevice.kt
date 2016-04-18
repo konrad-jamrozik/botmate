@@ -17,9 +17,9 @@ class AndroidDevice(val adb: IAdb, val pressDelayMillis: Long) : IAndroidDevice 
     log.debug("setup()")
   }
 
-  override fun press(button: Button) {
+  override fun press(androidButton: AndroidButton) {
     log.debug("press(button)")
-    adb.press(button)
+    adb.press(androidButton)
     Thread.sleep(pressDelayMillis)
   }
 

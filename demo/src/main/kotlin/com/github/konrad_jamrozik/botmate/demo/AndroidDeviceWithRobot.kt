@@ -15,21 +15,21 @@ class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : I
 
   override fun setup() {
     log.debug("setup()")
-    robot.calibrate()
+    robot.connectAndCalibrate()
     device.setup()
   }
 
-  override fun press(button: Button) {
+  override fun press(androidButton: AndroidButton) {
     log.debug("press(button)")
-    robot.moveTo(button.coordinates)
+    robot.moveTo(androidButton.coordinates)
     robot.moveDown()
-    device.press(button)
+    device.press(androidButton)
     robot.moveUp()
   }
 
   override fun reset() {
     log.debug("reset()")
     robot.moveToLowerRightCorner()
+    robot.disconnect()
   }
-
 }

@@ -11,18 +11,18 @@ package com.github.konrad_jamrozik.botmate.demo
 
 interface IDemoDeviceButtons {
 
-  val apps: Button.Standard
-  val home: Button.Home
-  val keepApp_LaunchIcon: Button.Standard
-  val keepApp_TakeANote: Button.Standard
-  val keyboard_H: Button.Standard
-  val keyboard_E: Button.Standard
-  val keyboard_L: Button.Standard
-  val keyboard_O: Button.Standard
-  val keyboard_ExclamationMark: Button.Standard
-  val keepApp_UpperRightBackground: Button.Standard
-  val keepApp_UpperLeftNote: Button.Standard
-  val keepApp_NoteUpperRightMenu: Button.Standard
-  val keepApp_NoteMenuDelete: Button.Standard
+  val apps: AndroidButton.Standard
+  val home: AndroidButton.Home
+  val keepApp_LaunchIcon: AndroidButton.Standard
+  val keepApp_TakeANote: AndroidButton.Standard
+  val keyboard_H: AndroidButton.Standard
+  val keyboard_E: AndroidButton.Standard
+  val keyboard_L: AndroidButton.Standard
+  val keyboard_O: AndroidButton.Standard
+  val keyboard_ExclamationMark: AndroidButton.Standard
+  val keepApp_UpperRightBackground: AndroidButton.Standard
+  val keepApp_UpperLeftNote: AndroidButton.Standard
+  val keepApp_NoteUpperRightMenu: AndroidButton.Standard
+  val keepApp_NoteMenuDelete: AndroidButton.Standard
 }
 

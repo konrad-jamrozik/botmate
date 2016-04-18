@@ -9,7 +9,29 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-sealed class Button(val coordinates: Pair<Int, Int>) {
-  class Home(coordinates: Pair<Int, Int>) : Button(coordinates)
-  class Standard(coordinates: Pair<Int, Int>) : Button(coordinates)
+import com.github.konrad_jamrozik.botmate.controller.ISerialDriver
+
+/**
+ * Represents a physical button that when clicked, activates BotMate demo.
+ */
+class Button(val serialDriver: ISerialDriver, val demo: IDemo) {
+
+  val log = loggerFor(Button::class.java)
+
+  val listener = ButtonListener(demo)
+  
+  fun listen() {
+    
+    // KJA2 unhardcode port
+    serialDriver.connect("COM8")
+    
+    serialDriver.observeCTS { listener.handleButtonEvent() }
+    
+    log.info("To disconnect the button, press Enter.")
+    readLine()
+    log.info("Disconnecting the button.")
+    
+    serialDriver.close()
+  }
 }
+

@@ -23,5 +23,5 @@ class DemoTest {
   fun runs_demo_with_device_stub() = runDemoWithDeviceStub()
 
   @Test
-  fun runs_demo_full() = runDemoFull()
+  fun runs_demo_full() = runDemo()
 }

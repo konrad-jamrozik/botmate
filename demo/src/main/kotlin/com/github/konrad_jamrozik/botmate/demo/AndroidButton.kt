@@ -9,11 +9,10 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-import org.junit.Test
-
-class ButtonTest {
-
-  @Test
-  fun starts_listening_to_button() = listenToButtonWithDemo()
-  
+/**
+ * Represents a widget on Android device touchscreen GUI.
+ */
+sealed class AndroidButton(val coordinates: Pair<Int, Int>) {
+  class Home(coordinates: Pair<Int, Int>) : AndroidButton(coordinates)
+  class Standard(coordinates: Pair<Int, Int>) : AndroidButton(coordinates)
 }

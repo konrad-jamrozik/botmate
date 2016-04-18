@@ -14,6 +14,6 @@ interface IAdb {
 
   fun pressHome()
 
-  fun press(button: Button)
+  fun press(androidButton: AndroidButton)
 }
 

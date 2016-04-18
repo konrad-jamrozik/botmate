@@ -10,7 +10,8 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 interface IRobot {
-  fun calibrate()
+  
+  fun connectAndCalibrate()
 
   fun moveTo(coordinates: Pair<Int, Int>)
 
@@ -19,4 +20,6 @@ interface IRobot {
   fun moveUp()
 
   fun moveToLowerRightCorner()
+  
+  fun disconnect()
 }

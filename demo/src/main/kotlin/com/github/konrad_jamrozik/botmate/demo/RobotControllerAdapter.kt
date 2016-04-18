@@ -33,8 +33,8 @@ class RobotControllerAdapter : IRobot
     return robotController
   }
 
-  override fun calibrate() {
-    check(robotController.connect()) {"check robotController.connect()"}
+  override fun connectAndCalibrate() {
+    check(robotController.connect()) {"check failed: robotController.connect()"}
     robotController.calibrate()
   }
 
@@ -58,6 +58,10 @@ class RobotControllerAdapter : IRobot
   override fun moveToLowerRightCorner() {
     // KJA2 unhardcode coordinates
     robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
+  }
+  
+  override fun disconnect() {
+    robotController.disconnect()
   }
 
 

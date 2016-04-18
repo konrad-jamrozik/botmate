@@ -13,31 +13,52 @@ import com.github.konrad_jamrozik.botmate.controller.RobotConfiguration
 import com.github.konrad_jamrozik.botmate.controller.SerialDriver
 import org.slf4j.LoggerFactory
 
+// KJA2 clean up logging output
+// KJA2 document everything
+
 fun main(args: Array<String>) {
 
-  if (args.contains("stubBoth"))
+  // KJA two params [button|demo] and [stubRobot] [stubDevice]
+  if (args.contains("button"))
+    listenToButtonWithDemo()
+  else if (args.contains("buttonWithStubs"))
+    listenToButtonWithDemoStubs()
+  else if (args.contains("stubBoth"))
     runDemoWithDeviceStubAndRobotStub()
   else if (args.contains("stubRobot"))
     runDemoWithRobotStub()
   else if (args.contains("stubDevice"))
     runDemoWithDeviceStub()
   else if (args.contains("demo"))
-    runDemoFull()
+    runDemo()
   else {
     val log = LoggerFactory.getLogger("main")
-    log.info("Possible arguments: demo | stubRobot | stubDevice | stubBoth")
+    log.info("Possible arguments: button | demo | stubRobot | stubDevice | stubBoth")
   }
+}
+
+fun listenToButtonWithDemo()
+{
+  Button(SerialDriver(RobotConfiguration()), demo).listen()
+}
+
+
+fun listenToButtonWithDemoStubs()
+{
+  Button(SerialDriver(RobotConfiguration()), demoWithDeviceStubAndRobotStub).listen()
 }
 
 private val pressDelayMillis = 0L
 
-fun runDemoFull() = Demo(
-  AndroidDeviceWithRobot(
-    AndroidDevice(Adb(), pressDelayMillis),
-    RobotControllerAdapter()
-  ),
-  DemoNexus10Buttons()
-).run()
+fun runDemo() {
+  demo.run()
+}
+
+fun runDemoWithDeviceStubAndRobotStub() {
+  demoWithDeviceStubAndRobotStub.run()
+}
+
+// KJA refactor out
 
 fun runDemoWithDeviceStub() {
   Demo(
@@ -59,6 +80,14 @@ fun runDemoWithRobotStub() {
   ).run()
 }
 
+private val demo = Demo(
+  AndroidDeviceWithRobot(
+    AndroidDevice(Adb(), pressDelayMillis),
+    RobotControllerAdapter()
+  ),
+  DemoNexus10Buttons()
+)
+
 private val demoWithDeviceStubAndRobotStub = Demo(
   AndroidDeviceWithRobot(
     AndroidDeviceStub(),
@@ -68,12 +97,4 @@ private val demoWithDeviceStubAndRobotStub = Demo(
   delayMillis = 0
 )
 
-fun runDemoWithDeviceStubAndRobotStub() {
-  demoWithDeviceStubAndRobotStub.run()
-}
-
-fun startListeningToButton() 
-{
-  ActivationButton(SerialDriver(RobotConfiguration()), demoWithDeviceStubAndRobotStub).listen()
-}
 

@@ -11,7 +11,7 @@ package com.github.konrad_jamrozik.botmate.demo
 
 interface IAndroidDevice {
   fun setup()
-  fun press(button: Button)
+  fun press(androidButton: AndroidButton)
   fun reset()
 
 }

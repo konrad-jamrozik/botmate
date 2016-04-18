@@ -17,6 +17,7 @@ public class RobotController implements IRobotController
 {
 
   public static final String CEBIT_IMAC_EXPECTED_SERIAL_PORT = "/dev/tty.usbmodem1.0.1";
+  // KJA2 unhardcode
   public static final String WINDOWS_EXPECTED_SERIAL_PORT = "COM7";
   private RobotConfiguration robotConfig;
   private Reader userInputReader;

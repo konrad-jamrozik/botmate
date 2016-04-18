@@ -17,10 +17,10 @@ import org.zeroturnaround.exec.ProcessExecutor
  * * stack overflow question: http://stackoverflow.com/questions/7789826/adb-shell-input-events
  */
 class Adb : IAdb {
-  override fun press(button: Button) {
-    return when (button) {
-      is Button.Home -> pressHome()
-      else -> tap(button.coordinates.first, button.coordinates.second)
+  override fun press(androidButton: AndroidButton) {
+    return when (androidButton) {
+      is AndroidButton.Home -> pressHome()
+      else -> tap(androidButton.coordinates.first, androidButton.coordinates.second)
     }
   }
 

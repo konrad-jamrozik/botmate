@@ -17,7 +17,7 @@ class AndroidDeviceStub : IAndroidDevice {
     log.debug("setup()")
   }
 
-  override fun press(button: Button) {
+  override fun press(androidButton: AndroidButton) {
     log.debug("press(button)")
   }
 

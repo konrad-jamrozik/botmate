@@ -33,3 +33,8 @@ task testDemo(type: Test, dependsOn: "testClasses") { Test it ->
   it.filter.includeTest "*DemoTest", "runs_demo_full"
 }
 
+task testButton(type: Test, dependsOn: "testClasses") { Test it ->
+  it.group = "verification"
+  it.description = "Tests the button"
+  it.filter.includeTest "*ButtonTest", "starts_listening_to_button"
+}
