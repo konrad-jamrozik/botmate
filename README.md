@@ -12,15 +12,15 @@ See also: [droidmate.org](https://www.droidmate.org/)
 
 * Clone this repo.
 * `cd cloned_repo_root`
-* `./gradlew installDist`
+* `./gradlew installDist` (on Windows always skip `./`)
 * `cd demo/build/install/demo/bin`
 * `./demo ports`  (on Windows, run `demo.bat` instead of `./demo`)
 * Note down the ports. Plug in the robot USB cable and ensure the robot is powered on.
 * `./demo ports`
-* Note down the new port. Set appropriate environment variable to it (see `./demo` output for its name).
+* Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
 * Plug in the button USB cable.
 * `./demo ports`
-* Note down the new port. Set appropriate environment variable to it (see `./demo` output for its name).
+* Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
 
 ### Testing
 * `./demo demo testDevice` to check the Android device works.

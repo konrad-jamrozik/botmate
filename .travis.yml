@@ -11,7 +11,7 @@ cache:
     - $HOME/.gradle/wrapper/
 env:
   global:
-    # The environment variables below are not necessary for the CI build. However, they are required to  run the project. 
+    # The environment variables below are not necessary for the CI build. However, they are required to run the project. 
     # The values provided here are example values that might possibly work on Windows. Consult README to understand how to setup
     # them on your local machine.
     - BOTMATE_BUTTON_SERIAL_PORT=COM8
