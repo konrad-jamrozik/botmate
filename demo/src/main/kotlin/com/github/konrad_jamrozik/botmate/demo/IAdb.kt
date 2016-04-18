@@ -15,5 +15,7 @@ interface IAdb {
   fun pressHome()
 
   fun press(androidButton: AndroidButton)
+
+  fun devices(): Int
 }
 

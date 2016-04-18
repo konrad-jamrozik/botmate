@@ -11,6 +11,8 @@ package com.github.konrad_jamrozik.botmate.demo
 
 import org.slf4j.LoggerFactory
 
+// KJA robustness
+// KJA run all the tests
 // KJA clean up logging output
 // KJA document everything
 

@@ -14,27 +14,27 @@ class RobotStub : IRobot {
   val log = loggerFor(RobotStub::class.java)
 
   override fun moveUp() {
-    log.debug("moveUp()")
+    log.trace("moveUp()")
   }
 
   override fun moveDown() {
-    log.debug("moveDown()")
+    log.trace("moveDown()")
   }
 
   override fun moveTo(coordinates: Pair<Int, Int>) {
-    log.debug("moveTo(coordinates)")
+    log.trace("moveTo(coordinates)")
   }
 
   override fun connectAndCalibrate() {
-    log.debug("calibrate()")
+    log.trace("calibrate()")
   }
 
   override fun moveToLowerRightCorner() {
-    log.debug("moveToLowerRightCorner()")
+    log.trace("moveToLowerRightCorner()")
   }
   
   override fun disconnect() {
-    log.debug("disconnect()")
+    log.trace("disconnect()")
   }
 
 }

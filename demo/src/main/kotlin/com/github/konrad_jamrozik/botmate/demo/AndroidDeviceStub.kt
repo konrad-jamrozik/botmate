@@ -14,15 +14,15 @@ class AndroidDeviceStub : IAndroidDevice {
   val log = loggerFor(AndroidDeviceStub::class.java)
 
   override fun setup() {
-    log.debug("setup()")
+    log.trace("setup()")
   }
 
   override fun press(androidButton: AndroidButton) {
-    log.debug("press(button)")
+    log.trace("press(button)")
   }
 
   override fun reset() {
-    log.debug("reset()")
+    log.trace("reset()")
   }
 
 }

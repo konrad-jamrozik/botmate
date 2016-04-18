@@ -10,6 +10,7 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 import org.zeroturnaround.exec.ProcessExecutor
+import java.util.concurrent.TimeUnit
 
 /**
  * Reference:
@@ -17,6 +18,9 @@ import org.zeroturnaround.exec.ProcessExecutor
  * * stack overflow question: http://stackoverflow.com/questions/7789826/adb-shell-input-events
  */
 class Adb : IAdb {
+
+  val log = loggerFor(Adb::class.java)
+  
   override fun press(androidButton: AndroidButton) {
     return when (androidButton) {
       is AndroidButton.Home -> pressHome()
@@ -24,11 +28,38 @@ class Adb : IAdb {
     }
   }
 
+  private val processExecutor = ProcessExecutor()
+    .exitValueNormal()
+    .readOutput(true)
+    .timeout(5, TimeUnit.SECONDS)
+    .destroyOnExit()
+
   override fun pressHome() {
-    ProcessExecutor().command("adb", "shell", "input", "keyevent", "3").execute()
+    log.trace("pressHome(): adb shell input keyevent 3")
+    processExecutor.command("adb", "shell", "input", "keyevent", "3").execute()
   }
 
   override fun tap(x: Int, y: Int) {
-    ProcessExecutor().command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
+    log.trace("tap(x,y): adb shell input tap $x $y")
+    processExecutor.command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }
+
+  override fun devices(): Int {
+    log.trace("devices(): adb devices")
+
+    val result = processExecutor.command("adb", "devices").execute()
+
+    val adbDevicesLines = result.outputUTF8().lines()
+
+    adbDevicesLines.forEach { log.trace("> $it") }
+
+    val availableDevices = adbDevicesLines.filter {
+      it.isNotEmpty()
+        && it != "List of devices attached"
+        && !it.contains("offline")
+    }
+    
+    return availableDevices.size
+  }
+
 }
