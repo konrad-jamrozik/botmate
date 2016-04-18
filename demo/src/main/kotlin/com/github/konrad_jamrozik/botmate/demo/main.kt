@@ -57,7 +57,7 @@ private fun printHelp() {
       "Listening stops when user presses Enter.")
     info("  demo   - run demo directly.")
     info("")
-    info("demo options:")
+    info("Demo options:")
     info("  full       - run demo using actual Android device and robot.")
     info("  stubDevice - run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
     info("  stubRobot  - run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
