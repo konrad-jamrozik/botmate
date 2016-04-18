@@ -13,6 +13,13 @@ import com.github.konrad_jamrozik.botmate.controller.*
 import java.io.InputStreamReader
 import kotlin.Pair
 
+/**
+ * Adapts the legacy robot-controlling code I wrote in Match 2013. 
+ * 
+ * Note the code has some Nexus 10 data hardcoded in
+ * [CoordinateMapperNexus10] and possibly in [RobotConfiguration]. Thus if one ever wants to adapt the robot 
+ * to work with different form factor, one will have to not only adapt [DemoNexus10Buttons] but the legacy code as well. 
+ */
 class RobotControllerAdapter : IRobot
 {
   private val robotConfig: RobotConfiguration by lazy { RobotConfiguration() }
@@ -26,7 +33,6 @@ class RobotControllerAdapter : IRobot
       robotConfig,
       userInputReader,
       SerialDriver(robotConfig),
-      // KJA2 decouple Nexus10. Move to Nexus10Buttons or related
       CoordinateMapperNexus10(robotConfig),
       RobotPathPlotterArc(robotConfig)
     )
@@ -56,7 +62,6 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun moveToLowerRightCorner() {
-    // KJA2 unhardcode coordinates
     robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
   }
   

@@ -11,6 +11,9 @@ package com.github.konrad_jamrozik.botmate.demo
 
 /**
  * A set of button definitions for Nexus 10 running Android 5 in landscape mode.
+ * 
+ * To make BotMate work with other devices you will have to provide corresponding implementation of [IDemoDeviceButtons] as well
+ * as adapt legacy code as described in comment of [RobotControllerAdapter].
  */
 class DemoNexus10Buttons : IDemoDeviceButtons {
 

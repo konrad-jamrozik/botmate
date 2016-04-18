@@ -11,8 +11,8 @@ package com.github.konrad_jamrozik.botmate.demo
 
 import org.slf4j.LoggerFactory
 
-// KJA2 clean up logging output
-// KJA2 document everything
+// KJA clean up logging output
+// KJA document everything
 
 fun main(args: Array<String>) {
 

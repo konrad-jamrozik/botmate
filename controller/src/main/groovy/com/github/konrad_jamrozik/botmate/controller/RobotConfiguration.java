@@ -25,7 +25,6 @@ public class RobotConfiguration
     "The number of segments from which the arcs followed by the robot are composed of.")
   public int robotArcSegmentCount = 30;
 
-  // KJA2 decouple Nexus10. Move to Nexus10Buttons or related
   @Parameter(names = {"-robotBackButtonLandscapeX"}, description =
     "The X coordinate value of the back button in landscape mode required by the robot.")
   public int robotBackButtonLandscapeX = 109;
@@ -73,17 +72,14 @@ public class RobotConfiguration
   @Parameter(names = {"-robotResponseTimeout"}, description =
     "How long DroidMate should await, in milliseconds, for robot's response on serial port after issuing a command to" +
       " it.")
-
   public int robotResponseTimeout = 30 * 1000;
 
   @Parameter(names = {"-robotSpeed"}, description =
     "The speed at which robot moves by default.")
-
   public int robotSpeed = 12000;
 
   @Parameter(names = {"-robotSpeedMax"}, description =
     "The maximum speed at which robot can move.")
-
   public int robotSpeedMax = 35000;
 
   @Parameter(names = {"-robotSpeedSlow"}, description =

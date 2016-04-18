@@ -93,8 +93,8 @@ public class RobotController implements IRobotController
       isLandscapeOrientation);
   }
 
-  // WISH the distinction between landscape and portrait back button locations should happen in ICoordinateMapper,
-  // not in IRobotController.
+  // Design note: ideally, the distinction between landscape and portrait back button locations should happen 
+  // in ICoordinateMapper, not in IRobotController.
   @Override
   public void moveToBackButton(boolean isLandscapeOrientation) throws RobotException
   {
@@ -143,13 +143,8 @@ public class RobotController implements IRobotController
       mappedEndX,
       mappedEndY, pathPoints.size());
 
-    // WISH debug
-//    serialDriver.send(String.format("G1 X%.1f Y%.1f F%d", mappedStartX, mappedStartY, speed));
-//    serialDriver.receive(); // read the immediate OK resulting from above command.
-
     moveThroughPath(speed, pathPoints);
 
-    // WISH DEBUG
     serialDriver.send(String.format("G4 P1")); // send OK when robot finishes moving.
     serialDriver.receive();  // wait for OK that will be sent when robot finishes moving.
   }
@@ -198,54 +193,26 @@ public class RobotController implements IRobotController
           "G1 X%.1f Y%.1f F%d",
           point.getX(),
           point.getY(),
-          slowDownPoints == 0 ? speed : computeSpeed2(speed, pointCounter, pathPoints.size(), slowDownPoints,
+          slowDownPoints == 0 ? speed : computeSpeed(speed, pointCounter, pathPoints.size(), slowDownPoints,
             speedupPoints)));
 
         serialDriver.receive();
         currentX = point.getX();
         currentY = point.getY();
 
-        // WISH this is an unpretty solution to the following problem:
-        // looks like if the OKs won't be read, the buffer is filled and doesn't accept any more commands.
-        // if (pointCounter % 3 == 0)
-        // receiveAllOks(3);
-
       }
     }
-    // receiveAllOks(pointCounter % 3);
 
     log.trace("Finished moving over an arc.");
   }
-
-  @SuppressWarnings("unused")
-  private void receiveAllOks(int pointCounter) throws RobotException
-  {
-    int oksToReceive = pointCounter;
-    while (oksToReceive > 0)
-    {
-      String receivedOks = serialDriver.receive();
-      oksToReceive -= org.apache.commons.lang3.StringUtils.countMatches(receivedOks, "ok");
-    }
-
-  }
-
-  @SuppressWarnings("static-method")
-  private int computeSpeed2(int speed, int pointCounter, int pointCount, int slowDownPoints, int speedupPoints)
+  
+  private static int computeSpeed(int speed, int pointCounter, int pointCount, int slowDownPoints, int speedupPoints)
   {
     if (speedupPoints + slowDownPoints >= pointCount)
     {
       speedupPoints = pointCount / 2;
       slowDownPoints = pointCount - speedupPoints;
 
-//      if (speedupPoints > pointCount)
-//        return (int) (speed * (pointCounter / (float) pointCount));
-//      else
-//      {
-//        if (pointCounter <= speedupPoints)
-//          return (int) (speed * (pointCounter / (float) speedupPoints));
-//        else
-//          return speed;
-//      }
     }
 
     if (pointCounter <= speedupPoints)
@@ -254,44 +221,12 @@ public class RobotController implements IRobotController
     if (pointCounter <= pointCount - slowDownPoints)
       return speed;
 
-//    if (slowDownPoints > pointCount)
-//      return (int) (speed * ((pointCount - (pointCounter - 1)) / (float) pointCount));
-
     pointCounter -= pointCount - slowDownPoints;
     pointCount -= pointCount - slowDownPoints;
 
     return (int) (speed * ((pointCount - (pointCounter - 1)) / (float) pointCount));
   }
 
-  @SuppressWarnings("unused")
-  private static int computeSpeed(int speed, int pointCounter, int pointCount)
-  {
-    if (pointCount <= 4)
-      return speed;
-
-    int pointsPart = pointCount / 4;
-
-    // First part of points speed up linearly
-    if (pointCounter <= pointsPart)
-      return (int) (speed * (pointCounter / (float) pointsPart));
-
-    // Now we consider the second third of points
-
-    pointCount -= pointsPart;
-    pointCounter -= pointsPart;
-
-    pointsPart = pointCount * (1 / 3);
-
-    // Second part of points move at max speed
-    if (pointCounter <= pointsPart)
-      return speed;
-
-    pointCount -= pointsPart;
-    pointCounter -= pointsPart;
-
-    // Last part of points: slow down linearly.
-    return Math.max(5000, (int) (speed * ((pointCount - (pointCounter - 1)) / (float) pointCount)));
-  }
 
   @Override
   public void moveDown() throws RobotException
@@ -352,7 +287,6 @@ public class RobotController implements IRobotController
         log.info("{}: {}", i + 1, serialPortNames.get(i));
       log.info("Choose the serial port you wish to connect to or 0 to abort and terminate DroidMate.");
       String userInput = userInputReader.readLine()
-      // TODO when run as junit test from Gradle, this fails with "java.lang.NumberFormatException: null"
       int userInputPortNumber = Integer.parseInt(userInput);
 
       if (userInputPortNumber == 0)
