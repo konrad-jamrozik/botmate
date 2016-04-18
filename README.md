@@ -48,8 +48,9 @@ The code was developed in IntelliJ IDEA.
 
 ### Demo project
 The main project is `demo`. For the app entry point, look for `main.kt` in package 
-`com.github.konrad_jamrozik.botmate.demo.main`. There are JUnit IntelliJ-runnable tests in `ButtonTest` and `DemoTest`. Gradle
-test tasks can be found in `test.gradle`.
+`com.github.konrad_jamrozik.botmate.demo.main`.  
+There are JUnit IntelliJ-runnable tests in `ButtonTest` and `DemoTest`.   
+Gradle test tasks can be found in `test.gradle`.
 
 ### Controller project
 The `controller` project contains legacy code written in March 2013 to control the robot, with some adaptations. The `demo` 
