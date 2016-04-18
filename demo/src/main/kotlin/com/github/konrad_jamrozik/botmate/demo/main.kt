@@ -11,8 +11,6 @@ package com.github.konrad_jamrozik.botmate.demo
 
 import org.slf4j.LoggerFactory
 
-// KJA document everything
-
 fun main(args: Array<String>) {
 
   checkArgs(args)
