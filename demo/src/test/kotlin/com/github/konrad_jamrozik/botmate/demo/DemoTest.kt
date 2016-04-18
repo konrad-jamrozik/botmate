@@ -14,14 +14,14 @@ import org.junit.Test
 class DemoTest {
 
   @Test
-  fun runs_demo_with_device_stub_and_robot_stub() = runDemoWithDeviceStubAndRobotStub()
+  fun runs_demo_with_device_stub_and_robot_stub() = Demo.withDeviceStubAndRobotStub.run()
   
   @Test
-  fun runs_demo_with_robot_stub() = runDemoWithRobotStub()
+  fun runs_demo_with_robot_stub() = Demo.withRobotStub.run()
 
   @Test
-  fun runs_demo_with_device_stub() = runDemoWithDeviceStub()
+  fun runs_demo_with_device_stub() = Demo.withDeviceStub.run()
 
   @Test
-  fun runs_demo_full() = runDemo()
+  fun runs_demo_full() = Demo.full.run()
 }

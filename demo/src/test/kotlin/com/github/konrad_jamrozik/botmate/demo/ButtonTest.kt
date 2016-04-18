@@ -14,6 +14,5 @@ import org.junit.Test
 class ButtonTest {
 
   @Test
-  fun starts_listening_to_button() = listenToButtonWithDemo()
-  
+  fun starts_listening_to_button() = Button.with(Demo.withDeviceStubAndRobotStub).listen()
 }

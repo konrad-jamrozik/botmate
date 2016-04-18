@@ -116,5 +116,39 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val dela
     log.debug("reset()")
     device.reset()
   }
+
+  companion object {
+    private val pressDelayMillis = 0L
+    val full = Demo(
+      AndroidDeviceWithRobot(
+        AndroidDevice(Adb(), pressDelayMillis),
+        RobotControllerAdapter()
+      ),
+      DemoNexus10Buttons()
+    )
+    val withDeviceStub = Demo(
+      AndroidDeviceWithRobot(
+        AndroidDeviceStub(),
+        RobotControllerAdapter()
+      ),
+      DemoNexus10Buttons()
+    )
+
+    val withRobotStub = Demo(
+      AndroidDeviceWithRobot(
+        AndroidDevice(Adb(), pressDelayMillis),
+        RobotStub()
+      ),
+      DemoNexus10Buttons()
+    )
+    val withDeviceStubAndRobotStub = Demo(
+      AndroidDeviceWithRobot(
+        AndroidDeviceStub(),
+        RobotStub()
+      ),
+      DemoNexus10Buttons(),
+      delayMillis = 0
+    )
+  }
 }
 

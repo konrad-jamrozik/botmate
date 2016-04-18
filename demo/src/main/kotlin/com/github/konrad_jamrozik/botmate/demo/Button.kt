@@ -10,6 +10,8 @@
 package com.github.konrad_jamrozik.botmate.demo
 
 import com.github.konrad_jamrozik.botmate.controller.ISerialDriver
+import com.github.konrad_jamrozik.botmate.controller.RobotConfiguration
+import com.github.konrad_jamrozik.botmate.controller.SerialDriver
 
 /**
  * Represents a physical button that when clicked, activates BotMate demo.
@@ -32,6 +34,12 @@ class Button(val serialDriver: ISerialDriver, val demo: IDemo) {
     log.info("Disconnecting the button.")
     
     serialDriver.close()
+  }
+  
+  companion object {
+    fun with(demo: IDemo) : Button {
+      return Button(SerialDriver(RobotConfiguration()), demo)
+    }
   }
 }
 

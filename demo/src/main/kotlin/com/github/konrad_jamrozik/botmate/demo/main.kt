@@ -9,14 +9,10 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-import com.github.konrad_jamrozik.botmate.controller.RobotConfiguration
-import com.github.konrad_jamrozik.botmate.controller.SerialDriver
 import org.slf4j.LoggerFactory
 
 // KJA2 clean up logging output
 // KJA2 document everything
-
-val log = LoggerFactory.getLogger("main")
 
 fun main(args: Array<String>) {
 
@@ -26,14 +22,14 @@ fun main(args: Array<String>) {
   validateArgs(args)
   
   val demo = when {
-    args.contains("full") -> demoFull
-    args.contains("stubDevice") -> demoWithDeviceStub
-    args.contains("stubRobot") -> demoWithRobotStub
-    args.contains("stubBoth") -> demoWithDeviceStubAndRobotStub
+    args.contains("full") -> Demo.full
+    args.contains("stubDevice") -> Demo.withDeviceStub
+    args.contains("stubRobot") -> Demo.withRobotStub
+    args.contains("stubBoth") -> Demo.withDeviceStubAndRobotStub
     else -> throw IllegalStateException()
   }
   when {
-    args.contains("button") -> Button(SerialDriver(RobotConfiguration()), demo).listen()
+    args.contains("button") -> Button.with(demo).listen() 
     args.contains("demo") -> demo.run()
   }
 }
@@ -41,7 +37,7 @@ fun main(args: Array<String>) {
 private fun validateArgs(args: Array<String>) {
   check (
     args.contains("button") xor args.contains("demo"),
-    { "Please private as argument exactly one of: 'button' or 'demo' (without '')" }
+    { "Please provide as argument exactly one of: 'button' or 'demo' (without '')" }
   )
   check (
     listOf("full", "stubRobot", "stubDevice", "stubBoth").count { args.contains(it) } == 1,
@@ -50,6 +46,7 @@ private fun validateArgs(args: Array<String>) {
 }
 
 private fun printHelp() {
+  val log = LoggerFactory.getLogger("main")
   with(log) {
     info("[button|demo] [full|stubDevice|stubRobot|stubBoth]")
     info("Execution mode:")
@@ -64,91 +61,4 @@ private fun printHelp() {
     info("stubBoth: run demo with fake robot and Android device")
   }
 }
-
-// KJA to remove
-fun main2(args: Array<String>) {
-
-  // KJA two params [button|demo] and [stubRobot] [stubDevice]
-  if (args.contains("button"))
-    listenToButtonWithDemo()
-  else if (args.contains("buttonWithStubs"))
-    listenToButtonWithDemoStubs()
-  else if (args.contains("stubBoth"))
-    runDemoWithDeviceStubAndRobotStub()
-  else if (args.contains("stubRobot"))
-    runDemoWithRobotStub()
-  else if (args.contains("stubDevice"))
-    runDemoWithDeviceStub()
-  else if (args.contains("demo"))
-    runDemo()
-  else {
-    val log = LoggerFactory.getLogger("main")
-    log.info("Possible arguments: button | demo | stubRobot | stubDevice | stubBoth")
-  }
-}
-
-fun listenToButtonWithDemo()
-{
-  Button(SerialDriver(RobotConfiguration()), demoFull).listen()
-}
-
-
-fun listenToButtonWithDemoStubs()
-{
-  Button(SerialDriver(RobotConfiguration()), demoWithDeviceStubAndRobotStub).listen()
-}
-
-private val pressDelayMillis = 0L
-
-fun runDemo() {
-  demoFull.run()
-}
-
-fun runDemoWithDeviceStubAndRobotStub() {
-  demoWithDeviceStubAndRobotStub.run()
-}
-
-// KJA refactor out
-
-private val demoWithDeviceStub = Demo(
-  AndroidDeviceWithRobot(
-    AndroidDeviceStub(),
-    RobotControllerAdapter()
-  ),
-  DemoNexus10Buttons()
-)
-
-fun runDemoWithDeviceStub() {
-  demoWithDeviceStub.run()
-}
-
-private val demoWithRobotStub = Demo(
-  AndroidDeviceWithRobot(
-    AndroidDevice(Adb(), pressDelayMillis),
-    RobotStub()
-  ),
-  DemoNexus10Buttons()
-)
-
-fun runDemoWithRobotStub() {
-  demoWithRobotStub.run()
-}
-
-private val demoFull = Demo(
-  AndroidDeviceWithRobot(
-    AndroidDevice(Adb(), pressDelayMillis),
-    RobotControllerAdapter()
-  ),
-  DemoNexus10Buttons()
-)
-
-private val demoWithDeviceStubAndRobotStub = Demo(
-  AndroidDeviceWithRobot(
-    AndroidDeviceStub(),
-    RobotStub()
-  ),
-  DemoNexus10Buttons(),
-  delayMillis = 0
-)
-
 

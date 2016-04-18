@@ -17,7 +17,7 @@ apply plugin: 'application'
 mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
 applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]
 
-tasks.run { JavaExec it -> it.args = ["stubBoth"] }
+tasks.run { JavaExec it -> it.args = ["demo","stubBoth"] }
 
 // ---------- Distributions configuration ----------
 
