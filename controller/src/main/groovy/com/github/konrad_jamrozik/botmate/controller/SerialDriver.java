@@ -37,7 +37,6 @@ public class SerialDriver implements ISerialDriver
 
   private static Logger log = LoggerFactory.getLogger(SerialDriver.class.getSimpleName());
 
-  // KJA2 serial driver shouldn't always require robot config
   public SerialDriver(RobotConfiguration robotConfig)
   {
     this.robotConfig = robotConfig;
@@ -98,7 +97,7 @@ public class SerialDriver implements ISerialDriver
 
     } catch (NoSuchPortException | PortInUseException | UnsupportedCommOperationException | IOException e)
     {
-      throw new RobotException(e);
+      throw new RobotException("Exception while trying to connect to port " + portName, e);
     }
 
     log.debug("DONE connecting to serial port {}. Connected successfully.", portName);

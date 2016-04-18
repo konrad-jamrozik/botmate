@@ -17,7 +17,6 @@ public class RobotController implements IRobotController
 {
 
   public static final String CEBIT_IMAC_EXPECTED_SERIAL_PORT = "/dev/tty.usbmodem1.0.1";
-  // KJA2 unhardcode
   public static final String WINDOWS_EXPECTED_SERIAL_PORT = "COM7";
   private RobotConfiguration robotConfig;
   private Reader userInputReader;
@@ -42,7 +41,13 @@ public class RobotController implements IRobotController
   }
 
   @Override
-  public boolean connect() throws RobotException
+  public boolean connect(String serialPortName) throws RobotException
+  {
+    serialDriver.connect(serialPortName)
+  }
+
+  @Override
+  public boolean interactiveConnect() throws RobotException
   {
     log.info("Connecting to the robot... (please wait while serial ports are retrieved)");
 
@@ -58,6 +63,7 @@ public class RobotController implements IRobotController
 
     return true;
   }
+
 
   @Override
   public void calibrate() throws RobotException

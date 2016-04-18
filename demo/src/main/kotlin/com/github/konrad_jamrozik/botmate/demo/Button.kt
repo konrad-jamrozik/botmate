@@ -24,8 +24,7 @@ class Button(val serialDriver: ISerialDriver, val demo: IDemo) {
   
   fun listen() {
     
-    // KJA2 unhardcode port
-    serialDriver.connect("COM8")
+    serialDriver.connect(serialPortName)
     
     serialDriver.observeCTS { listener.handleButtonEvent() }
     
@@ -37,6 +36,12 @@ class Button(val serialDriver: ISerialDriver, val demo: IDemo) {
   }
   
   companion object {
+    
+    val serialPortEnvVar = "BOTMATE_BUTTON_SERIAL_PORT"
+
+    val serialPortName = System.getenv(serialPortEnvVar) ?: 
+      "undefined. Please set environmental variable $serialPortEnvVar"
+
     fun with(demo: IDemo) : Button {
       return Button(SerialDriver(RobotConfiguration()), demo)
     }

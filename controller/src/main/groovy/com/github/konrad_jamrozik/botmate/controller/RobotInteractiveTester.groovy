@@ -55,7 +55,7 @@ public class RobotInteractiveTester
     lastX = robotConfig.robotMinX;
     lastY = robotConfig.robotMinY;
 
-    boolean connectionStatus = robotController.connect();
+    boolean connectionStatus = robotController.interactiveConnect();
 
     if (!connectionStatus)
     {

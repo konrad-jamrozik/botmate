@@ -47,23 +47,26 @@ private fun printHelp() {
   val log = LoggerFactory.getLogger("main")
   with(log) {
     info("Accepted arguments: ")
-    info("  button|demo full|stubDevice|stubRobot|stubBoth")
+    info("  (button|demo) (full|stubDevice|stubRobot|stubBoth)")
     info("-OR-")
     info("  ports")
     info("")
     info("Execution mode:")
-    info("  button - start listening to a hardware button which will launch demo when clicked. " +
+    info("  button - Start listening to a hardware button at serial port " +
+      "denoted by environmental variable ${Button.serialPortEnvVar}. " +
+      "The button will launch demo when clicked. " +
       "Listening stops when user presses Enter.")
-    info("  demo   - run demo directly.")
+    info("  demo   - Run demo directly.")
     info("")
     info("Demo options:")
-    info("  full       - run demo using actual Android device and robot.")
-    info("  stubDevice - run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
-    info("  stubRobot  - run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
-    info("  stubBoth   - run demo with fake robot and Android device.")
+    info("  full       - Run demo using actual Android device and robot connected through serial port " +
+      "denoted by environmental variable ${RobotControllerAdapter.serialPortEnvVar}.")
+    info("  stubDevice - Run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
+    info("  stubRobot  - Run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
+    info("  stubBoth   - Run demo with fake robot and Android device.")
     info("")
     info("Special arguments:")
-    info("  ports  - display a list of all available serial ports.")
+    info("  ports - Display a list of all available serial ports.")
 
   }
 }

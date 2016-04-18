@@ -34,7 +34,7 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun connectAndCalibrate() {
-    check(robotController.connect()) {"check failed: robotController.connect()"}
+    check(robotController.connect(serialPortName)) {"check failed: robotController.connect($serialPortName)"}
     robotController.calibrate()
   }
 
@@ -64,5 +64,10 @@ class RobotControllerAdapter : IRobot
     robotController.disconnect()
   }
 
+  companion object {
+    val serialPortEnvVar = "BOTMATE_ROBOT_SERIAL_PORT"
 
+    val serialPortName = System.getenv(serialPortEnvVar) ?:
+      "undefined. Please set environmental variable $serialPortEnvVar"
+  }
 }

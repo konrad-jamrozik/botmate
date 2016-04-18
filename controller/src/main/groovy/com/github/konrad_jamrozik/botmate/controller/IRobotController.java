@@ -11,7 +11,9 @@ package com.github.konrad_jamrozik.botmate.controller;
 
 public interface IRobotController
 {
-  boolean connect() throws RobotException;
+  boolean connect(String serialPortName) throws RobotException;
+  
+  boolean interactiveConnect() throws RobotException;
 
   void moveToMinXY(boolean isLandscapeOrientation) throws RobotException;
 

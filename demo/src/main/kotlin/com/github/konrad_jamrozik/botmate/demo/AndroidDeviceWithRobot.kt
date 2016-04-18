@@ -9,7 +9,7 @@
 
 package com.github.konrad_jamrozik.botmate.demo
 
-class AndroidDeviceWithRobot(val device : IAndroidDevice, val robot: IRobot) : IAndroidDevice {
+class AndroidDeviceWithRobot(val device: IAndroidDevice, val robot: IRobot) : IAndroidDevice {
 
   val log = loggerFor(AndroidDeviceWithRobot::class.java)
 

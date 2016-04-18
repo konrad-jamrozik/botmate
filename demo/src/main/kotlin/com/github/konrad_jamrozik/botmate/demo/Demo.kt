@@ -14,6 +14,7 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val dela
   
   val log = loggerFor(Demo::class.java)
 
+
   override fun run() {
     log.info("Demo: starting.")
     setup()
@@ -118,7 +119,9 @@ class Demo(val device: IAndroidDevice, val buttons: IDemoDeviceButtons, val dela
   }
 
   companion object {
+
     private val pressDelayMillis = 0L
+    
     val full = Demo(
       AndroidDeviceWithRobot(
         AndroidDevice(Adb(), pressDelayMillis),
