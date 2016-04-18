@@ -16,7 +16,57 @@ import org.slf4j.LoggerFactory
 // KJA2 clean up logging output
 // KJA2 document everything
 
+val log = LoggerFactory.getLogger("main")
+
 fun main(args: Array<String>) {
+
+  if (args.isEmpty())
+    printHelp()
+
+  validateArgs(args)
+  
+  val demo = when {
+    args.contains("full") -> demoFull
+    args.contains("stubDevice") -> demoWithDeviceStub
+    args.contains("stubRobot") -> demoWithRobotStub
+    args.contains("stubBoth") -> demoWithDeviceStubAndRobotStub
+    else -> throw IllegalStateException()
+  }
+  when {
+    args.contains("button") -> Button(SerialDriver(RobotConfiguration()), demo).listen()
+    args.contains("demo") -> demo.run()
+  }
+}
+
+private fun validateArgs(args: Array<String>) {
+  check (
+    args.contains("button") xor args.contains("demo"),
+    { "Please private as argument exactly one of: 'button' or 'demo' (without '')" }
+  )
+  check (
+    listOf("full", "stubRobot", "stubDevice", "stubBoth").count { args.contains(it) } == 1,
+    { "Please provide as argument exactly one of: full stubRobot stubDevice stubBoth" }
+  )
+}
+
+private fun printHelp() {
+  with(log) {
+    info("[button|demo] [full|stubDevice|stubRobot|stubBoth]")
+    info("Execution mode:")
+    info("button: start listening to a hardware button which will launch demo when clicked. " +
+      "Listening stops when user presses Enter.")
+    info("demo: run demo directly.")
+    info("")
+    info("demo options:")
+    info("full: run demo using actual Android device and robot.")
+    info("stubDevice: run demo as 'full', but with fake programmatic replacement instead of actual Android device.")
+    info("stubRobot: run demo as 'full', but with fake programmatic replacement instead of actual robot.")
+    info("stubBoth: run demo with fake robot and Android device")
+  }
+}
+
+// KJA to remove
+fun main2(args: Array<String>) {
 
   // KJA two params [button|demo] and [stubRobot] [stubDevice]
   if (args.contains("button"))
@@ -39,7 +89,7 @@ fun main(args: Array<String>) {
 
 fun listenToButtonWithDemo()
 {
-  Button(SerialDriver(RobotConfiguration()), demo).listen()
+  Button(SerialDriver(RobotConfiguration()), demoFull).listen()
 }
 
 
@@ -51,7 +101,7 @@ fun listenToButtonWithDemoStubs()
 private val pressDelayMillis = 0L
 
 fun runDemo() {
-  demo.run()
+  demoFull.run()
 }
 
 fun runDemoWithDeviceStubAndRobotStub() {
@@ -60,27 +110,31 @@ fun runDemoWithDeviceStubAndRobotStub() {
 
 // KJA refactor out
 
+private val demoWithDeviceStub = Demo(
+  AndroidDeviceWithRobot(
+    AndroidDeviceStub(),
+    RobotControllerAdapter()
+  ),
+  DemoNexus10Buttons()
+)
+
 fun runDemoWithDeviceStub() {
-  Demo(
-    AndroidDeviceWithRobot(
-      AndroidDeviceStub(),
-      RobotControllerAdapter()
-    ),
-    DemoNexus10Buttons()
-  ).run()
+  demoWithDeviceStub.run()
 }
+
+private val demoWithRobotStub = Demo(
+  AndroidDeviceWithRobot(
+    AndroidDevice(Adb(), pressDelayMillis),
+    RobotStub()
+  ),
+  DemoNexus10Buttons()
+)
 
 fun runDemoWithRobotStub() {
-  Demo(
-    AndroidDeviceWithRobot(
-      AndroidDevice(Adb(), pressDelayMillis),
-      RobotStub()
-    ),
-    DemoNexus10Buttons()
-  ).run()
+  demoWithRobotStub.run()
 }
 
-private val demo = Demo(
+private val demoFull = Demo(
   AndroidDeviceWithRobot(
     AndroidDevice(Adb(), pressDelayMillis),
     RobotControllerAdapter()
