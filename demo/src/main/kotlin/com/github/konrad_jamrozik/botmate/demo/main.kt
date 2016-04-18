@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
     return
   }
 
-  validateArgs(args)
+  checkArgs(args)
   
   val demo = when {
     args.contains("full") -> Demo.full
@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
   }
 }
 
-private fun validateArgs(args: Array<String>) {
+private fun checkArgs(args: Array<String>) {
   check (
     args.contains("button") xor args.contains("demo"),
     { "Please provide as argument exactly one of: 'button' or 'demo' (without '')" }
