@@ -37,6 +37,7 @@ public class SerialDriver implements ISerialDriver
 
   private static Logger log = LoggerFactory.getLogger(SerialDriver.class.getSimpleName());
 
+  // KJA2 serial driver shouldn't always require robot config
   public SerialDriver(RobotConfiguration robotConfig)
   {
     this.robotConfig = robotConfig;

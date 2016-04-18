@@ -16,12 +16,17 @@ import org.slf4j.LoggerFactory
 
 fun main(args: Array<String>) {
 
+  checkArgs(args)
+  
   if (args.isEmpty()) {
     printHelp()
     return
   }
 
-  checkArgs(args)
+  if (args.contains("ports")) {
+    SerialPorts().log()
+    return
+  }
   
   val demo = when {
     args.contains("full") -> Demo.full
@@ -41,7 +46,10 @@ fun main(args: Array<String>) {
 private fun printHelp() {
   val log = LoggerFactory.getLogger("main")
   with(log) {
-    info("Accepted arguments: [button|demo] [full|stubDevice|stubRobot|stubBoth]")
+    info("Accepted arguments: ")
+    info("  button|demo full|stubDevice|stubRobot|stubBoth")
+    info("-OR-")
+    info("  ports")
     info("")
     info("Execution mode:")
     info("  button - start listening to a hardware button which will launch demo when clicked. " +
@@ -53,10 +61,25 @@ private fun printHelp() {
     info("  stubDevice - run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
     info("  stubRobot  - run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
     info("  stubBoth   - run demo with fake robot and Android device.")
+    info("")
+    info("Special arguments:")
+    info("  ports  - display a list of all available serial ports.")
+
   }
 }
 
 private fun checkArgs(args: Array<String>) {
+
+  if (args.isEmpty())
+    return
+
+  if (args.contains("ports")) {
+    check ((args.size == 1),
+      { "You provided 'ports' argument. Please do not provide any other arguments with this argument." }
+    )
+    return
+  }
+  
   check (
     args.contains("button") xor args.contains("demo"),
     { "Please provide as argument exactly one of: 'button' or 'demo' (without '')" }
