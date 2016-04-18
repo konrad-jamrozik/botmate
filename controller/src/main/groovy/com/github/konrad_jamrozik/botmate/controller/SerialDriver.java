@@ -35,7 +35,7 @@ public class SerialDriver implements ISerialDriver
 
   private RobotConfiguration robotConfig;
 
-  private static Logger log = LoggerFactory.getLogger(SerialDriver.class.getSimpleName());
+  private static Logger log = LoggerFactory.getLogger(SerialDriver.class);
 
   public SerialDriver(RobotConfiguration robotConfig)
   {
@@ -70,9 +70,9 @@ public class SerialDriver implements ISerialDriver
     return CommPortIdentifier.getPortIdentifiers();
   }
 
-  public void connect(String portName) throws RobotException
+  public boolean connect(String portName) throws RobotException
   {
-    log.debug("Connecting to serial port {}...", portName);
+    log.debug("Connecting to serial port {}", portName);
 
     CommPortIdentifier portIdentifier;
     try
@@ -101,6 +101,7 @@ public class SerialDriver implements ISerialDriver
     }
 
     log.debug("DONE connecting to serial port {}. Connected successfully.", portName);
+    return true;
   }
 
   @Override
@@ -218,7 +219,7 @@ public class SerialDriver implements ISerialDriver
   @Override
   public void close()
   {
-    log.info("Closing serial port.");
+    log.debug("Closing serial port.");
     serialPort.close();
   }
 }

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Reference:
  * * KeyEvent API: http://developer.android.com/reference/android/view/KeyEvent.html
- * * stack overflow question: http://stackoverflow.com/questions/7789826/adb-shell-input-events
+ * * Stack Overflow question: http://stackoverflow.com/questions/7789826/adb-shell-input-events
  */
 class Adb : IAdb {
 
@@ -35,23 +35,23 @@ class Adb : IAdb {
     .destroyOnExit()
 
   override fun pressHome() {
-    log.trace("pressHome(): adb shell input keyevent 3")
+    log.debug("pressHome(): adb shell input keyevent 3")
     processExecutor.command("adb", "shell", "input", "keyevent", "3").execute()
   }
 
   override fun tap(x: Int, y: Int) {
-    log.trace("tap(x,y): adb shell input tap $x $y")
+    log.debug("tap(x,y): adb shell input tap $x $y")
     processExecutor.command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }
 
   override fun devices(): Int {
-    log.trace("devices(): adb devices")
+    log.debug("devices(): adb devices")
 
     val result = processExecutor.command("adb", "devices").execute()
 
     val adbDevicesLines = result.outputUTF8().lines()
 
-    adbDevicesLines.forEach { log.trace("> $it") }
+    adbDevicesLines.forEach { log.debug("> $it") }
 
     val availableDevices = adbDevicesLines.filter {
       it.isNotEmpty()

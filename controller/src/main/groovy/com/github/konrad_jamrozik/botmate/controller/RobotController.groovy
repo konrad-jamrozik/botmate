@@ -80,7 +80,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveToMinXY(boolean isLandscapeOrientation) throws RobotException
   {
-    log.debug("Moving robot to the start corner.");
+    log.trace("Moving robot to the start corner.");
     moveToMappedCoordinates(robotConfig.robotMinX, robotConfig.robotMinY, robotConfig.robotSpeedSlow,
       isLandscapeOrientation);
   }
@@ -88,7 +88,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveToMaxXY(boolean isLandscapeOrientation) throws RobotException
   {
-    log.debug("Moving robot to the end corner.");
+    log.trace("Moving robot to the end corner.");
     moveToMappedCoordinates(robotConfig.robotMaxX, robotConfig.robotMaxY, robotConfig.robotSpeedSlow,
       isLandscapeOrientation);
   }
@@ -98,7 +98,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveToBackButton(boolean isLandscapeOrientation) throws RobotException
   {
-    log.debug("Moving robot to the back button, isLandscapeOrientation = {}.", isLandscapeOrientation);
+    log.trace("Moving robot to the back button, isLandscapeOrientation = {}.", isLandscapeOrientation);
     if (isLandscapeOrientation)
       _moveToMappedCoordinates(robotConfig.robotBackButtonLandscapeX, robotConfig.robotBackButtonLandscapeY,
         true /* landscapeOrientation */);
@@ -110,7 +110,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveToCoordinates(int x, int y, int speed, boolean isLandscapeOrientation) throws RobotException
   {
-    log.debug("Moving robot to raw coordinates {} {}.", x, y);
+    log.trace("Moving robot to raw coordinates {} {}.", x, y);
 
     float mappedX = coordinateMapper.mapToX(x, y, isLandscapeOrientation);
     float mappedY = coordinateMapper.mapToY(x, y, isLandscapeOrientation);
@@ -123,7 +123,7 @@ public class RobotController implements IRobotController
   public void moveToMappedCoordinates(float mappedX, float mappedY, int speed, boolean isLandscapeOrientation)
     throws RobotException
   {
-    log.debug("Moving robot to mapped coordinates {} {}.", mappedX, mappedY);
+    log.trace("Moving robot to mapped coordinates {} {}.", mappedX, mappedY);
 
     float mappedStartX = currentX;
     float mappedStartY = currentY;
@@ -134,7 +134,7 @@ public class RobotController implements IRobotController
 
     if (speed == robotConfig.robotSpeedSlow)
     {
-      log.debug("Detected slow robot speed of {}. Moving over straight line.", robotConfig.robotSpeedSlow);
+      log.trace("Detected slow robot speed of {}. Moving over straight line.", robotConfig.robotSpeedSlow);
       pathPoints = Lists.newArrayList(new Pair<Float, Float>(mappedX, mappedY));
     } else
       pathPoints = robotPathPlotter.plot(mappedStartX, mappedStartY, mappedEndX, mappedEndY);
@@ -231,7 +231,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveDown() throws RobotException
   {
-    log.debug("Moving robot down.");
+    log.trace("Moving robot down.");
     serialDriver.send(String.format("G1 Z%d F%d", robotConfig.robotLoweredZ, robotConfig.robotSpeed));
     serialDriver.receive();
   }
@@ -239,7 +239,7 @@ public class RobotController implements IRobotController
   @Override
   public void moveUp() throws RobotException
   {
-    log.debug("Moving robot up.");
+    log.trace("Moving robot up.");
     serialDriver.send(String.format("G1 Z%d F%d", robotConfig.robotLiftedZ, robotConfig.robotSpeed));
     serialDriver.receive();
 

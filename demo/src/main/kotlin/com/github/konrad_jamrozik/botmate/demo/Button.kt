@@ -40,7 +40,7 @@ class Button(val serialDriver: ISerialDriver, val demo: IDemo) {
     val serialPortEnvVar = "BOTMATE_BUTTON_SERIAL_PORT"
 
     val serialPortName = System.getenv(serialPortEnvVar) ?: 
-      "undefined. Please set environmental variable $serialPortEnvVar"
+      "undefined. Please set environment variable $serialPortEnvVar"
 
     fun with(demo: IDemo) : Button {
       return Button(SerialDriver(RobotConfiguration()), demo)

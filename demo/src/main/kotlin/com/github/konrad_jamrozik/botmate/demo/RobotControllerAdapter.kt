@@ -22,6 +22,8 @@ import kotlin.Pair
  */
 class RobotControllerAdapter : IRobot
 {
+  val log = loggerFor(RobotControllerAdapter::class.java)
+  
   private val robotConfig: RobotConfiguration by lazy { RobotConfiguration() }
 
   private val robotController: IRobotController by lazy { buildRobotController() }
@@ -40,11 +42,14 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun connectAndCalibrate() {
+    log.debug("connectAndCalibrate()")
     check(robotController.connect(serialPortName)) {"check failed: robotController.connect($serialPortName)"}
     robotController.calibrate()
   }
 
   override fun moveTo(coordinates: Pair<Int, Int>) {
+    
+    log.debug("moveTo(${coordinates.first},${coordinates.second})")
 
     robotController.moveToCoordinates(
       coordinates.first,
@@ -54,18 +59,22 @@ class RobotControllerAdapter : IRobot
   }
 
   override fun moveDown() {
+    log.debug("moveDown()")
     robotController.moveDown()
   }
 
   override fun moveUp() {
+    log.debug("moveUp()")
     robotController.moveUp()
   }
 
   override fun moveToLowerRightCorner() {
+    log.debug("moveToLowerRightCorner()")
     robotController.moveToMaxXY(/* isLandscapeOrientation: */ true);
   }
   
   override fun disconnect() {
+    log.debug("disconnect()")
     robotController.disconnect()
   }
 
@@ -73,6 +82,6 @@ class RobotControllerAdapter : IRobot
     val serialPortEnvVar = "BOTMATE_ROBOT_SERIAL_PORT"
 
     val serialPortName = System.getenv(serialPortEnvVar) ?:
-      "undefined. Please set environmental variable $serialPortEnvVar"
+      "<undefined_port>. Please set environment variable $serialPortEnvVar"
   }
 }

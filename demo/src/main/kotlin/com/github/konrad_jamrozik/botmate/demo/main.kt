@@ -11,9 +11,6 @@ package com.github.konrad_jamrozik.botmate.demo
 
 import org.slf4j.LoggerFactory
 
-// KJA robustness
-// KJA run all the tests
-// KJA clean up logging output
 // KJA document everything
 
 fun main(args: Array<String>) {
@@ -55,14 +52,14 @@ private fun printHelp() {
     info("")
     info("Execution mode:")
     info("  button - Start listening to a hardware button at serial port " +
-      "denoted by environmental variable ${Button.serialPortEnvVar}. " +
+      "denoted by environment variable ${Button.serialPortEnvVar}. " +
       "The button will launch demo when clicked. " +
       "Listening stops when user presses Enter.")
     info("  demo   - Run demo directly.")
     info("")
     info("Demo options:")
     info("  full       - Run demo using actual Android device and robot connected through serial port " +
-      "denoted by environmental variable ${RobotControllerAdapter.serialPortEnvVar}.")
+      "denoted by environment variable ${RobotControllerAdapter.serialPortEnvVar}.")
     info("  stubDevice - Run demo as 'full', but with fake programmatic replacement instead of an actual Android device.")
     info("  stubRobot  - Run demo as 'full', but with fake programmatic replacement instead of an actual robot.")
     info("  stubBoth   - Run demo with fake robot and Android device.")
