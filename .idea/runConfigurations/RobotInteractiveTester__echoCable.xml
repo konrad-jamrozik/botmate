@@ -6,7 +6,7 @@
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
-    <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.controller.RobotInteractiveTester" />
+    <option name="MAIN_CLASS_NAME" value="com.konradjamrozik.botmate.controller.RobotInteractiveTester" />
     <option name="VM_PARAMETERS" value="-ea -Djava.library.path=C:\my\local\repos\github\botmate\controller\libs_serialPort\Windows_x64" />
     <option name="PROGRAM_PARAMETERS" value="-echoCable" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />

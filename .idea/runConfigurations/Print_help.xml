@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Print help" type="JetRunConfigurationType" factoryName="Kotlin" singleton="true">
     <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-    <option name="MAIN_CLASS_NAME" value="com.github.konrad_jamrozik.botmate.demo.MainKt" />
+    <option name="MAIN_CLASS_NAME" value="com.konradjamrozik.botmate.demo.MainKt" />
     <option name="VM_PARAMETERS" value="-Djava.library.path=C:\my\local\repos\github\botmate\controller\libs_serialPort\Windows_x64" />
     <option name="PROGRAM_PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="" />

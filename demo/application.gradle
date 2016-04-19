@@ -14,7 +14,7 @@ assert serialPortMacOSNativeLibDir.isDirectory()
 // ---------- Application configuration ----------
 
 apply plugin: 'application'
-mainClassName = "com.github.konrad_jamrozik.botmate.demo.MainKt"
+mainClassName = "com.konradjamrozik.botmate.demo.MainKt"
 applicationDefaultJvmArgs = ["-Djava.library.path=${serialPortNativeLibDir}"]
 
 tasks.run { JavaExec it -> it.args = ["demo","stubBoth"] }
