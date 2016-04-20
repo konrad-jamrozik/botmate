@@ -1,19 +1,27 @@
 language: groovy
 jdk:
   - oraclejdk8
+  
 before_install:
   - chmod +x gradlew
+
 before_cache:
   - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
 env:
   global:
+  
     # The environment variables below are not necessary for the CI build. However, they are required to run the project. 
     # The values provided here are example values that might possibly work on Windows. Consult README to understand how to setup
     # them on your local machine.
+    
     - BOTMATE_BUTTON_SERIAL_PORT=COM8
+    # For OS X it might be /dev/tty.usbserial-FTFPE4X8
+    
     - BOTMATE_ROBOT_SERIAL_PORT=COM7
-        
+    # For OS X it might be /dev/tty.usbmodem1_0_1
