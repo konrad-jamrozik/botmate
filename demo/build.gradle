@@ -1,4 +1,4 @@
-group 'com.github.konrad-jamrozik'
+group 'com..konradjamrozik'
 version 'dev'
 
 apply plugin: 'kotlin'
