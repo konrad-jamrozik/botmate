@@ -47,7 +47,7 @@ public class SerialDriver implements ISerialDriver
     log.info("Getting serial port names.");
 
     Enumeration<CommPortIdentifier> portEnum;
-    Vector<String> portVect = new Vector<String>();
+    Vector<String> portVect = new Vector<>();
     portEnum = getPortIdentifiers();
 
     CommPortIdentifier portId;
@@ -95,16 +95,7 @@ public class SerialDriver implements ISerialDriver
       } else
         throw new RobotException(String.format("The port %s is not instance of a SerialPort!", portName));
 
-    } catch (NoSuchPortException e)
-    {
-      throw new RobotException("Exception while trying to connect to port " + portName, e);
-    } catch (PortInUseException e)
-    {
-      throw new RobotException("Exception while trying to connect to port " + portName, e);
-    } catch (UnsupportedCommOperationException e)
-    {
-      throw new RobotException("Exception while trying to connect to port " + portName, e);
-    } catch (IOException e)
+    } catch (NoSuchPortException | PortInUseException | UnsupportedCommOperationException | IOException e)
     {
       throw new RobotException("Exception while trying to connect to port " + portName, e);
     }

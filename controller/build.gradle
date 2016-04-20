@@ -12,8 +12,8 @@ version 'dev'
 
 apply plugin: "groovy"
 
-sourceCompatibility = JavaVersion.VERSION_1_6
-targetCompatibility = JavaVersion.VERSION_1_6
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 apply from: 'serialPortLib.gradle'
 assert serialPortLibJar.isFile()
