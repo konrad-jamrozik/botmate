@@ -1,7 +1,6 @@
 ### Gradle ###
 .gradle
 build/
-**/\.idea/libraries/Gradle__*
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -13,9 +12,12 @@ gradle-app.setting
 .gradletasknamecache
 
 ### IntelliJ IDEA ###
+**/.idea/modules.xml
+*.iml
 **/*.iws 
 **/*.eml
 **/.idea/workspace.xml
 **/.idea/tasks.xml
 **/.idea/misc.xml
+**/.idea/libraries/Gradle__*
 out/
