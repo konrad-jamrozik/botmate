@@ -27,17 +27,6 @@ import java.util.concurrent.TimeUnit;
 
 public class SerialDriver implements ISerialDriver
 {
-  static
-  {
-    // Fix to make sure ports are being found on Linux. See gnu.io.RXTXCommDriver.registerScannedPorts() in
-    // in RXTXcomm-src.jar
-    // in <repo_clone_root>/botmate/controller/libs_serialPort_origin/rxtx.zip
-
-    String osname = System.getProperty("os.name");
-    if (osname.contains("nix"))
-      System.setProperty("os.name", "Linux-all-ports");
-  }
-  
   private static final Marker serialDriver = MarkerFactory.getMarker("MARKER_SERIAL_DRIVER");
 
   private InputStream serialPortIn;
@@ -78,6 +67,7 @@ public class SerialDriver implements ISerialDriver
   @SuppressWarnings("unchecked")
   private Enumeration<CommPortIdentifier> getPortIdentifiers()
   {
+    CommPortIdentifier.addPortName(
     return CommPortIdentifier.getPortIdentifiers();
   }
 
