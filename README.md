@@ -16,27 +16,26 @@ See also: [droidmate.org](https://www.droidmate.org/)
 
 ### Initial setup
 
-* Ensure you have the following installed `JDK 8` and `adb` from Android SDK. `adb` has to be on `PATH`.
-  * On Windows you will probably need to install `Android SDK` and `Platform-tools`.
-  * On Linux, instead just `sudo apt-get install android-tools-adb` might be enough.
-* Clone this repo.
-* `cd cloned_repo_root`
+* Ensure you have installed  `JDK 8` and `adb` from Android SDK. `adb` has to be on `PATH`.
+  * On Windows you will probably need to install `Android SDK` and `Platform-tools` and adjust the `PATH`.
+  * On Linux, instead just `sudo apt-get install android-tools-adb` is enough.
+* `git clone https://github.com/konrad-jamrozik/botmate.git`
+* `cd botmate`
 * `./gradlew installDist`
   * On Windows always skip `./`
   * On Linux first do `chmod +x gradlew`
 * `cd demo/build/install/demo/bin`
 * `./demo ports` 
   * On Windows always run `demo.bat` instead of `./demo`
-  * On Linux, if no ports are visible, first do `sudo su`. You have to stay a super user for the exports to work, as described 
-  below.
 * Note down the ports. Plug in the robot USB cable and ensure the robot is powered on.
 * `./demo ports`
-* Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
-  * On Linux, it might be `export ENV_VAR_NAME=/dev/ttyACM0` 
+* Note down the new port. Set appropriate environment variable to point to it. Variable name to set is explained by `./demo` 
+(without any arguments) output. 
+  * On Linux, if no ports are visible, first do `sudo su`. 
 * Plug in the button USB cable.
 * `./demo ports`
-* Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
-  * On Linux, it might be `export ENV_VAR_NAME=/dev/ttyUSB0`
+* Note down the new port. Set appropriate environment variable to point to it. Variable name to set is explained by `./demo` 
+(without any arguments) output. 
 
 ### Testing
 * `./demo demo testDevice` to check the Android device works.
