@@ -41,7 +41,7 @@ public class RobotController implements IRobotController
   }
 
   @Override
-  public boolean connect(String serialPortName) throws RobotException
+  public boolean connect(String serialPortName) throws Exception
   {
     serialDriver.connect(serialPortName)
   }
@@ -57,7 +57,13 @@ public class RobotController implements IRobotController
     if (chosenSerialPortName == null)
       return false;
 
-    serialDriver.connect(chosenSerialPortName);
+    try
+    {
+      serialDriver.connect(chosenSerialPortName)
+    } catch (Exception e)
+    {
+      e.printStackTrace()
+    };
 
     log.info("DONE connecting to the robot. Connected on serial port: {}", chosenSerialPortName);
 

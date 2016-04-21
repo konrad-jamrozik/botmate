@@ -9,9 +9,12 @@
 
 package com.konradjamrozik.botmate.demo
 
+import com.konradjamrozik.botmate.controller.RobotConfiguration
+import com.konradjamrozik.botmate.controller.SerialDriver
+
 class SerialPorts {
   val log = loggerFor(SerialPorts::class.java)
   fun log() {
-    com.konradjamrozik.botmate.controller.SerialDriver(com.konradjamrozik.botmate.controller.RobotConfiguration()).serialPortNames.forEach { log.info(it) }
+    SerialDriver(RobotConfiguration()).serialPortNames.forEach { log.info(it) }
   }
 }

@@ -70,7 +70,7 @@ public class SerialDriver implements ISerialDriver
     return CommPortIdentifier.getPortIdentifiers();
   }
 
-  public boolean connect(String portName) throws RobotException
+  public boolean connect(String portName) throws Exception
   {
     log.debug("Connecting to serial port {}", portName);
 
@@ -97,7 +97,7 @@ public class SerialDriver implements ISerialDriver
 
     } catch (NoSuchPortException | PortInUseException | UnsupportedCommOperationException | IOException e)
     {
-      throw new RobotException("Exception while trying to connect to port " + portName, e);
+      throw new Exception("Exception while trying to connect to port " + portName, e);
     }
 
     log.debug("DONE connecting to serial port {}. Connected successfully.", portName);
