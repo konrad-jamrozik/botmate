@@ -41,6 +41,11 @@ ext.serialPortLinuxNativeLibDir = {
 }()
 assert serialPortLinuxNativeLibDir.isDirectory()
 
+ext.serialPortLinuxNative32LibDir = {
+  return new File("$projectDir/$libsSerialPort/Linux_x86_32")
+}()
+assert serialPortLinuxNativeLibDir.isDirectory()
+
 ext.serialPortMacOSNativeLibDir = {
   return new File("$projectDir/$libsSerialPort/Mac_OS")
 }()
