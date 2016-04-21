@@ -57,7 +57,7 @@ The code was developed in IntelliJ IDEA.
 
 ### Demo project
 The main project is `demo`. For the app entry point, look for `main.kt` in package 
-`com.github.konrad_jamrozik.botmate.demo`.  
+`com.konradjamrozik.botmate.demo`.  
 There are JUnit IntelliJ-runnable tests in `ButtonTest` and `DemoTest`.   
 Gradle test tasks can be found in `test.gradle`.
 
