@@ -44,7 +44,7 @@ class Adb : IAdb {
     processExecutor.command("adb", "shell", "input", "tap", x.toString(), y.toString()).execute()
   }
 
-  override fun devices(): Int {
+  override fun devices(): List<String> {
     log.debug("devices(): adb devices")
 
     val result = processExecutor.command("adb", "devices").execute()
@@ -53,13 +53,13 @@ class Adb : IAdb {
 
     adbDevicesLines.forEach { log.debug("> $it") }
 
-    val availableDevices = adbDevicesLines.filter {
-      it.isNotEmpty()
-        && it != "List of devices attached"
-        && !it.contains("offline")
+    val availableDevices = adbDevicesLines.filterNot {
+      it.isBlank() 
+        || it.contains("List of devices attached")
+        || it.contains("offline")
     }
-    
-    return availableDevices.size
+
+    return availableDevices
   }
 
 }

@@ -16,6 +16,6 @@ interface IAdb {
 
   fun press(androidButton: AndroidButton)
 
-  fun devices(): Int
+  fun devices(): List<String>
 }
 

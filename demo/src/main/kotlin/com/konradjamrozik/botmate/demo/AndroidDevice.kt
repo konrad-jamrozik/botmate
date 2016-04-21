@@ -15,8 +15,11 @@ class AndroidDevice(val adb: IAdb, val pressDelayMillis: Long) : IAndroidDevice 
 
   override fun setup() {
     log.debug("setup()")
-    val deviceCount = adb.devices()
-    check(deviceCount == 1, { "'adb devices' shows $deviceCount available device(s). Required exactly 1." })
+    
+    val devicesStrings = adb.devices()
+    
+    check(devicesStrings.size == 1, { "'adb devices' shows ${devicesStrings.size} available device(s). Required exactly 1. " +
+      "The devices:\n" + devicesStrings.joinToString(separator = "\n", prefix = "> ") })
   }
 
   override fun press(androidButton: AndroidButton) {
