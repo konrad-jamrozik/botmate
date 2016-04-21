@@ -16,7 +16,9 @@ See also: [droidmate.org](https://www.droidmate.org/)
 
 ### Initial setup
 
-* Ensure you have `JDK 8` and `Android SDK` installed.
+* Ensure you have the following installed `JDK 8` and `adb` from Android SDK. `adb` has to be on `PATH`.
+  * On Windows you will probably need to install `Android SDK` and `Platform-tools`.
+  * On Linux, instead just `sudo apt-get install android-tools-adb` might be enough.
 * Clone this repo.
 * `cd cloned_repo_root`
 * `./gradlew installDist`

@@ -21,7 +21,9 @@ env:
     # them on your local machine.
     
     - BOTMATE_BUTTON_SERIAL_PORT=COM8
-    # For OS X it might be /dev/tty.usbserial-FTFPE4X8
+    # On OS X it might be /dev/tty.usbserial-FTFPE4X8
+    # On Linux it might be /dev/ttyUSB0
     
     - BOTMATE_ROBOT_SERIAL_PORT=COM7
-    # For OS X it might be /dev/tty.usbmodem1_0_1
+    # On OS X it might be /dev/tty.usbmodem1_0_1
+    # On Linux it might be /dev/ttyACM0
