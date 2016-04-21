@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RXTXcomm:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RXTXcomm_jar</output-path>
+    <root id="archive" name="RXTXcomm.jar">
+      <element id="module-output" name="RXTXcomm-src" />
+    </root>
+  </artifact>
+</component>
