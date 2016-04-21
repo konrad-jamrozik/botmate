@@ -316,16 +316,24 @@ public class RXTXCommDriver implements CommDriver
             System.out.println(CU +
               " " + Cl);
           }
+          
           if (osName.equals("Solaris") ||
             osName.equals("SunOS"))
             checkSolaris(PortName, PortType);
-          else if (testRead(PortName, PortType))
+          else
           {
-            CommPortIdentifier.addPortName(
-              PortName,
-              PortType,
-              this
-            );
+            if (debug)
+            {
+              System.out.println("Test read of: PortName: "+PortName+ " PortType: "+PortType + " Result: "+ testRead(PortName, PortType));
+            }
+            if (testRead(PortName, PortType))
+            {
+              CommPortIdentifier.addPortName(
+                PortName,
+                PortType,
+                this
+              );
+            }
           }
         }
       }
