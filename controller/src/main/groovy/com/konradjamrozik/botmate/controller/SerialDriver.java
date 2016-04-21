@@ -67,7 +67,6 @@ public class SerialDriver implements ISerialDriver
   @SuppressWarnings("unchecked")
   private Enumeration<CommPortIdentifier> getPortIdentifiers()
   {
-    CommPortIdentifier.addPortName(
     return CommPortIdentifier.getPortIdentifiers();
   }
 
