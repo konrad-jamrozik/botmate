@@ -19,14 +19,20 @@ See also: [droidmate.org](https://www.droidmate.org/)
 * Clone this repo.
 * `cd cloned_repo_root`
 * `./gradlew installDist` // on Windows always skip `./`
+  * On Linux first do `chmod +x gradlew`
 * `cd demo/build/install/demo/bin`
-* `./demo ports` // on Windows always run `demo.bat` instead of `./demo`
+* `./demo ports` 
+  * on Windows always run `demo.bat` instead of `./demo`
+  * on Linux, if no ports are visible, first do `sudo su`. You have to stay a super user for the exports to work, as described 
+  below.
 * Note down the ports. Plug in the robot USB cable and ensure the robot is powered on.
 * `./demo ports`
 * Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
+  * On Linux, it might be `export ENV_VAR_NAME=/dev/ttyACM0` 
 * Plug in the button USB cable.
 * `./demo ports`
 * Note down the new port. Set appropriate environment variable to it, as given by `./demo` output.
+  * On Linux, it might be `export ENV_VAR_NAME=/dev/ttyUSB0`
 
 ### Testing
 * `./demo demo testDevice` to check the Android device works.
@@ -55,3 +61,16 @@ Gradle test tasks can be found in `test.gradle`.
 ### Controller project
 The `controller` project contains legacy code written in March 2013 to control the robot, with some adaptations. The `demo` 
 project uses this project, with main bridging class being `RobotControllerAdapter`, located in `demo` project.
+
+### RXTXComm-src
+
+The `cloned_repo_root/controller/libs_serialPort_origin/RXTXcomm-src` contains sources of the `RTXTComm` used in BotMate. It has
+two modifications:
+* Added turning on debug output to stdout if `RXTX_DEBUG` environment variable is set.
+* Made RXTX scan much more ports on Linux.
+
+Search for `Konrad Jamrozik` in the java sources to find the modifications. 
+The original `RXTX-comm` src can be found in `libs_serialPort_origin/rxtx.zip`. 
+
+The IntelliJ project has a jar artifact defined that on build will copy the output to the correct location. It will be picked up
+by `./gradlew installDist` .
