@@ -16,14 +16,16 @@ See also: [droidmate.org](https://www.droidmate.org/)
 
 ### Initial setup
 
+* Ensure you have `JDK 8` and `Android SDK` installed.
 * Clone this repo.
 * `cd cloned_repo_root`
-* `./gradlew installDist` // on Windows always skip `./`
+* `./gradlew installDist`
+  * On Windows always skip `./`
   * On Linux first do `chmod +x gradlew`
 * `cd demo/build/install/demo/bin`
 * `./demo ports` 
-  * on Windows always run `demo.bat` instead of `./demo`
-  * on Linux, if no ports are visible, first do `sudo su`. You have to stay a super user for the exports to work, as described 
+  * On Windows always run `demo.bat` instead of `./demo`
+  * On Linux, if no ports are visible, first do `sudo su`. You have to stay a super user for the exports to work, as described 
   below.
 * Note down the ports. Plug in the robot USB cable and ensure the robot is powered on.
 * `./demo ports`
