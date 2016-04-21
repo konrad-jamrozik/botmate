@@ -26,10 +26,12 @@ def mainDist = distributions.findByName("main")
 
 CopySpec windowsNativeContents = project.copySpec {into('libNative_Windows_x64') {from serialPortWindowsNativeLibDir}}
 CopySpec linuxNativeContents = project.copySpec {into('libNative_Linux_x86_64') {from serialPortLinuxNativeLibDir}}
+CopySpec linux32NativeContents = project.copySpec {into('libNative_Linux_x86_32') {from serialPortLinuxNativeLibDir}}
 CopySpec macOSNativeContents = project.copySpec {into('libNative_MacOS') {from serialPortMacOSNativeLibDir}}
 
 mainDist.contents.with(windowsNativeContents)
 mainDist.contents.with(linuxNativeContents)
+mainDist.contents.with(linux32NativeContents)
 mainDist.contents.with(macOSNativeContents)
 
 // ---------- Start scripts configuration ----------
