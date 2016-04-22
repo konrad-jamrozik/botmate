@@ -21,6 +21,7 @@ See also: [droidmate.org](https://www.droidmate.org/)
   * On Linux, instead just `sudo apt-get install android-tools-adb` is enough.
 * `git clone https://github.com/konrad-jamrozik/botmate.git`
 * `cd botmate`
+* `./gradlew build`
 * `./gradlew installDist`
   * On Windows always skip `./`
   * On Linux first do `chmod +x gradlew`
