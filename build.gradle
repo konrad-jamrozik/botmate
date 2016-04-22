@@ -7,8 +7,6 @@
 //
 // github.com/konrad-jamrozik/botmate
 
-import org.gradle.api.tasks.testing.logging.TestLogEvent
-
 group 'com.github.konrad-jamrozik'
 version 'dev'
 
@@ -30,18 +28,6 @@ allprojects {
   repositories {
     mavenCentral()
   }
-
-  it.afterEvaluate {
-    tasks.withType(Test) {Test testTask ->
-
-      testTask.testLogging.events.add(TestLogEvent.FAILED)
-
-      testTask.afterSuite {TestDescriptor td, TestResult tr ->
-
-        if (td.name.contains("Test Run") && tr.successfulTestCount == tr.testCount)
-          println "==> All ${tr.successfulTestCount} tests passed."
-      }
-
-    }
-  }
 }
+
+apply from: file("log.gradle")
