@@ -21,8 +21,7 @@ See also: [droidmate.org](https://www.droidmate.org/)
   * On Linux, instead just `sudo apt-get install android-tools-adb` is enough.
 * `git clone https://github.com/konrad-jamrozik/botmate.git`
 * `cd botmate`
-* `./gradlew build`
-* `./gradlew installDist`
+* `./gradlew build installDist`
   * On Windows always skip `./`
   * On Linux first do `chmod +x gradlew`
 * `cd demo/build/install/demo/bin`
@@ -39,12 +38,12 @@ See also: [droidmate.org](https://www.droidmate.org/)
 (without any arguments) output. 
 
 ### Testing
-* `./demo demo testDevice` to check the Android device works.
-* `./demo demo testRobot` to check the robot works.
-* `./demo button stubBoth` to check the button works.
+* `sudo ./demo demo testDevice` to check the Android device works.
+* `sudo ./demo demo testRobot` to check the robot works.
+* `sudo ./demo button stubBoth` to check the button works.
 
 ### Final, full setup
-* `./demo button full`
+* `sudo ./demo button full`
 
 ## Interactive robot control
 
