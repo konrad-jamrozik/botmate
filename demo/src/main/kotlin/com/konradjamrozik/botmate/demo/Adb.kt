@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
  */
 class Adb : IAdb {
 
-  val log = com.konradjamrozik.botmate.demo.loggerFor(Adb::class.java)
+  val log = loggerFor(Adb::class.java)
   
   override fun press(androidButton: AndroidButton) {
     return when (androidButton) {
